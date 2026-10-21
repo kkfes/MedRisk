@@ -151,16 +151,19 @@ export class MockMedRiskApi implements MedRiskApi {
   }
 
   async listAssessments(): Promise<AssessmentSummary[]> {
-    return this.results.map((result) => ({
-      id: result.id,
-      created_at: result.created_at,
-      model_version: result.model_version,
-      risks: result.risks.map(({ target, probability, category }) => ({
-        target,
-        probability,
-        category,
-      })),
-    }))
+    // FR-06: the assessments are returned with the newest first.
+    return [...this.results]
+      .sort((a, b) => b.created_at.localeCompare(a.created_at))
+      .map((result) => ({
+        id: result.id,
+        created_at: result.created_at,
+        model_version: result.model_version,
+        risks: result.risks.map(({ target, probability, category }) => ({
+          target,
+          probability,
+          category,
+        })),
+      }))
   }
 
   async getAssessment(id: string): Promise<AssessmentResult> {

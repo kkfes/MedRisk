@@ -176,6 +176,86 @@ body {
   list-style: none;
 }
 
+/* --------------------------------------------------------------- history */
+.history-table td:last-child {
+  min-width: 16rem;
+}
+
+.history__probability {
+  font-weight: var(--font-weight-semibold);
+}
+
+.history__missing {
+  color: var(--color-text-muted);
+}
+
+.history__confirm p {
+  margin-bottom: var(--space-2);
+}
+
+/* ----------------------------------------------------------------- chart */
+.chart {
+  margin: 0;
+}
+
+.chart__canvas {
+  width: 100%;
+  max-width: 40rem;
+  height: auto;
+}
+
+.chart__grid {
+  stroke: var(--color-chart-grid);
+  stroke-width: 1;
+}
+
+.chart__axis-label {
+  fill: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.chart__line {
+  fill: none;
+  stroke-width: 2;
+}
+
+.chart__line--cvd {
+  stroke: var(--color-chart-series-1);
+}
+
+.chart__line--t2d {
+  stroke: var(--color-chart-series-2);
+  stroke-dasharray: 6 4;
+}
+
+.chart__point--cvd {
+  fill: var(--color-chart-series-1);
+}
+
+.chart__point--t2d {
+  fill: var(--color-chart-series-2);
+}
+
+.chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.chart__legend-sample {
+  width: 40px;
+  height: 10px;
+}
+
 @media (max-width: 480px) {
   .definition-list {
     grid-template-columns: 1fr;

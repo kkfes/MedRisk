@@ -60,16 +60,6 @@ export const en = {
     'the navigation above.',
   'generic.action': 'Action',
 
-  /* --------------------------------------------------------- placeholder */
-  'placeholder.assessment':
-    'The questionnaire form (12 questions, validation, progress and the error summary) is ' +
-    'implemented in task DIP-36.',
-  'placeholder.report':
-    'The risk report screen (both risks, the categories, the factor list and the ' +
-    'disclaimer) is implemented in task DIP-37.',
-  'placeholder.history':
-    'The history and trend screen is implemented in task DIP-38.',
-
   /* ------------------------------------------------------- questionnaire */
   'questionnaire.title': 'Health questionnaire',
   'questionnaire.intro':
@@ -185,6 +175,47 @@ export const en = {
   'unit.years': 'years',
   'unit.cm': 'cm',
   'unit.kg': 'kg',
+
+  /* ------------------------------------------------------------- history */
+  'history.title': 'Assessment history',
+  'history.intro':
+    'Every assessment of this account with its date, both risks and their category. ' +
+    'You can delete a single record or the whole account.',
+  'history.loading': 'Loading the assessments …',
+  'history.load_error': 'The assessments could not be loaded.',
+  'history.delete_error': 'The record could not be deleted. Please try again.',
+  'history.empty': 'There is no assessment yet.',
+  'history.start': 'Make an assessment',
+  'history.trend_title': 'Trend of your risk over time',
+  'history.trend_intro':
+    'Each point is one assessment, the oldest on the left. The solid line is the ' +
+    'cardiovascular risk, the dashed line is the type 2 diabetes risk.',
+  'history.trend_hint':
+    'Make at least two assessments to see the trend of your risk over time.',
+  'history.chart_label': 'Line chart of the two risks over time: {summary}',
+  'history.legend_cvd': 'Cardiovascular disease (solid line)',
+  'history.legend_t2d': 'Type 2 diabetes (dashed line)',
+  'history.list_title': 'All assessments',
+  'history.list_caption': 'The assessments of this account, newest first.',
+  'history.column_date': 'Date',
+  'history.column_cvd': 'Cardiovascular disease',
+  'history.column_t2d': 'Type 2 diabetes',
+  'history.column_model': 'Model',
+  'history.column_actions': 'Actions',
+  'history.open_report': 'Open the report',
+  'history.delete': 'Delete this record',
+  'history.delete_confirm': 'Delete this record? It cannot be undone.',
+  'history.delete_yes': 'Yes, delete the record',
+  'history.delete_cancel': 'Cancel',
+  'history.deleted': 'The record was deleted.',
+  'history.account_title': 'Your data',
+  'history.account_intro':
+    'You can delete your account with all its assessment records. This cannot be undone.',
+  'history.delete_account': 'Delete my account',
+  'history.delete_account_confirm':
+    'Delete the account and all {count} records? This cannot be undone.',
+  'history.delete_account_yes': 'Yes, delete the account',
+  'history.account_deleted': 'The account and all its records were deleted.',
 } as const
 
 export type TranslationKey = keyof typeof en

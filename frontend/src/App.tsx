@@ -5,8 +5,8 @@ import { createApi } from './api'
 import type { MedRiskApi } from './api/port'
 import { t } from './i18n'
 import { HomePage } from './pages/HomePage'
+import { HistoryPage } from './pages/HistoryPage'
 import { NotFoundPage } from './pages/NotFoundPage'
-import { PlaceholderPage } from './pages/PlaceholderPage'
 import { QuestionnairePage } from './pages/QuestionnairePage'
 import { ReportPage } from './pages/ReportPage'
 
@@ -59,10 +59,7 @@ export function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/assessment" element={<QuestionnairePage />} />
       <Route path="/report/:id" element={<ReportPage />} />
-      <Route
-        path="/history"
-        element={<PlaceholderPage title={t('nav.history')} message="placeholder.history" />}
-      />
+      <Route path="/history" element={<HistoryPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )

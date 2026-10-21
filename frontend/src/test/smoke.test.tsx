@@ -96,10 +96,9 @@ describe('the routes', () => {
     expect(screen.getByRole('button', { name: 'Calculate my risk' })).toBeInTheDocument()
   })
 
-  it('routes to the history placeholder', () => {
+  it('routes to the history', () => {
     renderApp('/history')
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('History')
-    expect(screen.getByText(/DIP-38/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Assessment history')
   })
 
   it('shows the not-found page for an unknown address', () => {
