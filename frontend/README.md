@@ -51,6 +51,34 @@ In `live` mode the dev server forwards `/api` to `http://127.0.0.1:8000`.
 | `npm run test:watch` | Runs the tests in watch mode. |
 | `npm run api:types -- <openapi.json> -o src/api/schema.d.ts` | Generates the TypeScript types from the OpenAPI document, as soon as it is committed (DIP-18). |
 
+## The questionnaire
+
+The 12 questions of FR-01 are defined as data in `src/questionnaire/questions.ts`:
+the label, the hint, the range, the step and whether the question is required.
+The form (`src/pages/QuestionnairePage.tsx`) and the validation
+(`src/questionnaire/validation.ts`) both read that list, so a question cannot
+appear in the form without its rule.
+
+| Group | Questions | Rule |
+|---|---|---|
+| Required (8) | age, sex, height, weight, smoking, physical activity, diagnosed hypertension, family history | a value is required |
+| Optional (4) | systolic blood pressure, total cholesterol, HDL cholesterol, fasting glucose | may stay empty |
+
+The ranges are the ones of the prototype (DIP-8): age 18–90 years, height
+120–230 cm, weight 30–250 kg (step 0.5), systolic blood pressure 80–250 mmHg,
+total cholesterol 2–15 mmol/L, HDL cholesterol 0.5–4 mmol/L, fasting glucose
+2–30 mmol/L.
+
+Behaviour of the form:
+
+- every field has a real `<label>`; the error message is linked to the field
+  with `aria-describedby`, and the field is marked with `aria-invalid`;
+- the error summary at the top of the form lists every error and links to its
+  field; after a failed submission the focus moves to the summary;
+- the progress line counts the answered and the answered required questions;
+- the answers are sent to the API adapter; the button is disabled while the
+  request is running (`aria-busy` on the form).
+
 ## The API layer
 
 ```

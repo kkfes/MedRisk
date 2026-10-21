@@ -69,6 +69,74 @@ export const en = {
     'disclaimer) is implemented in task DIP-37.',
   'placeholder.history':
     'The history and trend screen is implemented in task DIP-38.',
+
+  /* ------------------------------------------------------- questionnaire */
+  'questionnaire.title': 'Health questionnaire',
+  'questionnaire.intro':
+    'Answer the questions about your health and lifestyle. Eight questions are required; ' +
+    'the four measurements are optional and can be skipped if you do not know them. You can ' +
+    'change every answer before you submit.',
+  'questionnaire.progress_label': 'Questionnaire progress',
+  'questionnaire.progress_text':
+    '{answered} of {total} answered · {answeredRequired} of {required} required · ' +
+    '{optional} optional measurements can be skipped',
+  'questionnaire.required_legend': 'Required questions',
+  'questionnaire.optional_legend': 'Optional measurements',
+  'questionnaire.required_badge': 'Required',
+  'questionnaire.optional_badge': 'Optional',
+  'questionnaire.submit': 'Calculate my risk',
+  'questionnaire.submitting': 'Calculating …',
+  'questionnaire.back_home': 'Back to the start page',
+  'questionnaire.api_error':
+    'The risk could not be calculated at the moment. Please try again in a few minutes.',
+  'questionnaire.mock_note':
+    'The example values you will see afterwards are fixed examples of the mock adapter — ' +
+    'they are not calculated from your answers.',
+
+  /* ------------------------------------------------------ question labels */
+  'question.age.label': 'Age',
+  'question.age.hint': 'Years (18–90)',
+  'question.sex.label': 'Sex',
+  'question.height.label': 'Height',
+  'question.height.hint': 'Centimetres (120–230)',
+  'question.weight.label': 'Weight',
+  'question.weight.hint': 'Kilograms (30–250, step 0.5)',
+  'question.systolic_bp.label': 'Systolic blood pressure',
+  'question.systolic_bp.hint': 'mmHg (80–250). Leave the field empty if you do not know it.',
+  'question.total_cholesterol.label': 'Total cholesterol',
+  'question.total_cholesterol.hint': 'mmol/L (2–15). Leave the field empty if you do not know it.',
+  'question.hdl_cholesterol.label': 'HDL cholesterol',
+  'question.hdl_cholesterol.hint': 'mmol/L (0.5–4). Leave the field empty if you do not know it.',
+  'question.fasting_glucose.label': 'Fasting glucose',
+  'question.fasting_glucose.hint': 'mmol/L (2–30). Leave the field empty if you do not know it.',
+  'question.smoking.label': 'Do you smoke?',
+  'question.physical_activity.label':
+    'Physical activity of at least 150 minutes per week?',
+  'question.hypertension.label':
+    'Have you been diagnosed with high blood pressure (hypertension)?',
+  'question.family_history.label':
+    'Do any of your parents or siblings have heart disease or diabetes?',
+
+  /* ---------------------------------------------------------- answer options */
+  'option.sex.female': 'Female',
+  'option.sex.male': 'Male',
+  'option.smoking.no': 'No',
+  'option.smoking.yes': 'Yes',
+  'option.smoking.former': 'I used to, but I stopped',
+  'option.yesno.no': 'No',
+  'option.yesno.yes': 'Yes',
+
+  /* ------------------------------------------------------------ validation */
+  'validation.required': 'Enter a value for “{label}”.',
+  'validation.number': 'Enter a number for “{label}”.',
+  'validation.integer': 'Enter a whole number for “{label}”.',
+  'validation.range': 'The value for “{label}” must be between {min} and {max} {unit}.',
+  'validation.step': 'The value for “{label}” must be a multiple of {step}.',
+  'validation.choice_required': 'Select one option for “{label}”.',
+  'validation.summary_title': 'The form contains errors',
+  'validation.summary_intro':
+    'Fix the {count} errors below and send the form again. Every error links to its field.',
+  'validation.summary_link': 'Go to {label}',
 } as const
 
 export type TranslationKey = keyof typeof en
