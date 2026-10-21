@@ -9,11 +9,12 @@ done, known limitations and outstanding tasks.
 | Repository | <https://github.com/kkfes/MedRisk> (public) |
 | Submitted tag | `pre-defense-1-2026-10-24` (annotated) — the exact commit submitted at the pre-defense |
 | Earlier snapshot | `pre-defense-1` (19 October 2026) — the M0 pack as it stood on that day; it was not moved and is not replaced |
+| Team snapshot | `pre-defense-1-2026-10-22` (22 October 2026) — the state of the repository with the contributions of all three members and the published pull-request reviews |
 | Stage | Milestone **M0 — Concept** (pre-defense 1) |
-| YouTrack | <https://medrisk.youtrack.cloud/projects/DIP> — tasks DIP-1 … DIP-46 |
+| YouTrack | <https://medrisk.youtrack.cloud/projects/DIP> — 46 tasks (DIP-1 … DIP-47, see the note on the task IDs) |
 | Date | 24 October 2026 |
 
-## Why there are two tags
+## Why there are several tags
 
 `pre-defense-1` was created on 19 October 2026, when the M0 pack was ready. The team rule
 (`CONTRIBUTING.md`, section 5) is that a submitted tag is never moved or replaced, so that tag
@@ -21,10 +22,11 @@ stays exactly where it is and the submission note that it contains — describin
 19 October — has not been altered.
 
 The version that is actually submitted on 24 October 2026 contains the contributions of all
-three team members, so it carries its own date-stamped tag, `pre-defense-1-2026-10-24`. Both
-tags point into the same history; the earlier one is a snapshot, the later one is the
-submission. The stage tags of the process (`pre-defense-1`, `pre-defense-2`,
-`final-pre-defense`) are never repurposed.
+three team members, so it carries its own date-stamped tag, `pre-defense-1-2026-10-24`.
+Between the two, the team published the intermediate snapshot `pre-defense-1-2026-10-22`
+(22 October 2026), so that the state of the work with the published pull-request reviews is
+archived as well. All three tags point into the same history; the stage tags of the process
+(`pre-defense-1`, `pre-defense-2`, `final-pre-defense`) are never repurposed.
 
 ## Summary of completed work
 
@@ -51,9 +53,10 @@ submission. The stage tags of the process (`pre-defense-1`, `pre-defense-2`,
   confidence intervals, calibration slope and intercept) and a results register that contains
   only `TBD` / `NOT RUN` / `BLOCKED` — no result is claimed.
 - **Management:** roles, milestones M0–M6, risks and dependencies; a Git repository with
-  traceable commits from all three team members; a YouTrack project with 46 prioritised,
-  assigned and scheduled tasks, each with a work-link comment pointing at its commit and pull
-  request.
+  traceable commits from all three team members; a YouTrack project with 46 prioritised and
+  scheduled tasks (the supervisor review task is tracked as `DIP-47` — YouTrack never
+  renumbers issues, see the note in the backlog document); the delivered tasks carry a
+  work-link comment pointing at their commit and their pull request.
 
 All documents are preliminary and may change during implementation (changes are recorded
 as ADRs and committed like any other change).
@@ -106,7 +109,7 @@ recorded on the pull request page itself.
 | Task | Owner | Milestone |
 |---|---|---|
 | DIP-44 Evidence of relevance: 3–5 interviews with user representatives | Team | M0 |
-| DIP-43 Supervisor review of M1–M4 results | Supervisor | M5 |
+| DIP-47 (CSV row 43) Supervisor review of M1–M4 results | Supervisor | M5 |
 | DIP-12 … DIP-16 Data, preprocessing and the two baselines | Zarina | M1 |
 | DIP-21 … DIP-28 Models, SHAP, model card and evaluation report | Zarina, Muslim | M2 |
 | DIP-29 … DIP-34 PostgreSQL, REST API, authentication, CI | Muslim | M3 |
