@@ -84,11 +84,17 @@ function exampleResult(id: string, createdAt: string, cvd: number, t2d: number):
       ...EXAMPLE_RISKS[0],
       probability: cvd,
       category: riskCategory(cvd),
+      summary:
+        `Example summary: the cardiovascular risk is shown at ${Math.round(cvd * 100)} % over the ` +
+        'next 10 years. In the real service this sentence is generated from the model output.',
     },
     {
       ...EXAMPLE_RISKS[1],
       probability: t2d,
       category: riskCategory(t2d),
+      summary:
+        `Example summary: the type 2 diabetes risk is shown at ${Math.round(t2d * 100)} % over the ` +
+        'next 10 years. In the real service this sentence is generated from the model output.',
     },
   ]
   return {

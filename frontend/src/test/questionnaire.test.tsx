@@ -125,7 +125,9 @@ describe('the questionnaire', () => {
     await user.type(screen.getByLabelText(/^Systolic blood pressure/), '142')
     await user.click(screen.getByRole('button', { name: 'Calculate my risk' }))
 
-    await waitFor(() => expect(screen.getByText(/implemented in task DIP-37/)).toBeInTheDocument())
+    await waitFor(() =>
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Your risk report'),
+    )
     expect(created).toHaveLength(1)
     expect(created[0]).toMatchObject({
       age: 52,

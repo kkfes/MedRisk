@@ -154,6 +154,28 @@ body {
   color: var(--color-danger);
 }
 
+.risk-block {
+  margin-bottom: var(--space-6);
+}
+
+.risk-block:last-child {
+  margin-bottom: 0;
+}
+
+.risk-value {
+  margin-bottom: var(--space-2);
+  color: var(--color-text-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.factors {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 @media (max-width: 480px) {
   .definition-list {
     grid-template-columns: 1fr;

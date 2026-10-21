@@ -79,6 +79,28 @@ Behaviour of the form:
 - the answers are sent to the API adapter; the button is disabled while the
   request is running (`aria-busy` on the form).
 
+## The risk report
+
+`src/pages/ReportPage.tsx` shows the result of one assessment (FR-03, FR-04):
+
+- the **disclaimer** of the API response at the top of the screen (mandatory on
+  every result screen, NFR-06);
+- the table **“What you entered”** — the answers of the questionnaire, with the
+  same labels as the form; an optional measurement that was not answered is
+  shown as “not answered”;
+- **both risks** (cardiovascular disease and type 2 diabetes): the numeric value
+  in percent, the category with its symbol **and** its text label, and the
+  plain-language summary of the API;
+- the **factor list**: every factor with its direction (a word and a symbol, never
+  a colour alone) and its magnitude as a share of the largest contribution,
+  sorted by the size of the contribution (FR-04);
+- the blocks **“Who can help you interpret this result”** and
+  **“What this tool cannot tell you”** — the tool names where to seek help and
+  states that it does not diagnose and does not give treatment advice.
+
+The formatting rules live in `src/risk/format.ts` (symbols, badge classes,
+percentages, the sorting), the table of the answers in `src/risk/describeInput.ts`.
+
 ## The API layer
 
 ```

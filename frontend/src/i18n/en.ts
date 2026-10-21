@@ -137,6 +137,54 @@ export const en = {
   'validation.summary_intro':
     'Fix the {count} errors below and send the form again. Every error links to its field.',
   'validation.summary_link': 'Go to {label}',
+
+  /* ------------------------------------------------------------- report */
+  'report.title': 'Your risk report',
+  'report.loading': 'Loading the result …',
+  'report.not_found':
+    'The assessment could not be found. It may have been deleted.',
+  'report.entered_title': 'What you entered',
+  'report.entered_caption': 'The answers of your questionnaire.',
+  'report.risk_title': 'Estimated risk',
+  'report.risk_value_label': 'Estimated 10-year risk',
+  'report.not_answered': 'not answered',
+  'report.factors_title': 'What drives your risk',
+  'report.factors_list': 'Factors that influence the estimate',
+  'report.factors_intro':
+    'Each row shows one factor and how much it moved your estimate. The magnitude is ' +
+    'given as a share of the largest contribution in this estimate.',
+  'report.factor_increases': 'increases your risk',
+  'report.factor_decreases': 'decreases your risk',
+  'report.factor_share': '{share} % of the largest contribution in this estimate',
+  'report.help_title': 'Who can help you interpret this result',
+  'report.help_physician':
+    'Start with a primary-care physician (therapist / GP / family doctor).',
+  'report.help_diagnosed':
+    'If you already have a diagnosis (for example hypertension or diabetes), mention it — ' +
+    'the estimate does not replace it.',
+  'report.help_take_page':
+    'Bring this page with you: the table of your answers and the factor list make the ' +
+    'conversation easier.',
+  'report.cannot_title': 'What this tool cannot tell you',
+  'report.cannot_diagnosis':
+    'It does not diagnose. The numbers are probabilities, not a conclusion about your health.',
+  'report.cannot_treatment':
+    'It does not tell you what to change, how to change it or which medicine to take.',
+  'report.new_assessment': 'Make another assessment',
+  'report.history': 'Open the history',
+  'report.model_version': 'Model version',
+  'report.created_at': 'Date of the assessment',
+
+  /* --------------------------------------------------------- risk levels */
+  'risk_category.low': 'Low risk',
+  'risk_category.moderate': 'Moderate risk',
+  'risk_category.high': 'High risk',
+  'risk_category.very_high': 'Very high risk',
+
+  /* -------------------------------------------------------------- units */
+  'unit.years': 'years',
+  'unit.cm': 'cm',
+  'unit.kg': 'kg',
 } as const
 
 export type TranslationKey = keyof typeof en
