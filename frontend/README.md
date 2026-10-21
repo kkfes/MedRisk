@@ -101,6 +101,35 @@ Behaviour of the form:
 The formatting rules live in `src/risk/format.ts` (symbols, badge classes,
 percentages, the sorting), the table of the answers in `src/risk/describeInput.ts`.
 
+## The history and the trend
+
+`src/pages/HistoryPage.tsx` shows the history of the account (FR-06, FR-07,
+NFR-04):
+
+- the **trend chart** (`src/components/TrendChart.tsx`) — one line per risk over
+  the assessments, the oldest on the left. It is an inline SVG without a chart
+  library; the two lines are distinguished by the line style (solid / dashed) and
+  by the legend, not by the colour alone (WCAG 1.4.1). The chart carries a text
+  summary in its accessible name, and the table below it contains the same
+  values. With less than two assessments a hint is shown instead of the chart.
+- the **table of all assessments** — the date, both risks with their number and
+  their category, the version of the model that produced the record, a link to
+  the report and the button to delete the record. The records are listed with
+  the newest first, as the API returns them (FR-06).
+- the **deletion of a single record** — the button first asks for a
+  confirmation, and the focus moves to the confirming button. The record is
+  deleted only after the confirmation.
+- the **deletion of the account** — the same two-step confirmation, with the
+  number of the records that will be deleted with it.
+
+The preparation of the chart data (the points, the scale, the geometry and the
+summary of the trend) is in `src/risk/trend.ts` as pure functions, so it can be
+tested without a browser.
+
+> The screen works against the API adapter. In mock mode it shows the records of
+> the current session, because the registration and the login (FR-05) are not
+> part of this task and the backend is not available yet.
+
 ## The API layer
 
 ```
