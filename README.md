@@ -99,11 +99,13 @@ verification plan are complete. Runnable code is not expected at this stage.
 │   ├── literature/            # critical literature review + source analysis table
 │   ├── comparisons/           # existing systems & technology comparisons
 │   ├── requirements/          # FR/NFR, priorities, acceptance criteria
+│   ├── design/                # design system, UX notes (DIP-19)
 │   ├── architecture/          # architecture description + diagrams (.mmd sources & SVG)
 │   ├── verification/          # testing & evaluation plan, metrics, baselines
 │   ├── management/            # roles, milestones, risks, YouTrack backlog
 │   └── supervisor/            # supervisor feedback log
 ├── prototype/                 # static HTML/CSS mockups of key user scenarios
+├── frontend/                  # React app (from M4) + design tokens & style guide (DIP-19)
 ├── src/                       # application code + requirements.txt (added from M1)
 ├── ml/                        # data pipeline & training code + requirements.txt (from M1)
 ├── tests/                     # automated tests (added from M1)
@@ -119,6 +121,7 @@ verification plan are complete. Runnable code is not expected at this stage.
 | Existing system comparison | [docs/comparisons/existing-systems-comparison.md](docs/comparisons/existing-systems-comparison.md) |
 | Technology comparison | [docs/comparisons/technology-comparison.md](docs/comparisons/technology-comparison.md) |
 | Requirements specification | [docs/requirements/requirements-specification.md](docs/requirements/requirements-specification.md) |
+| Design system & style guide | [docs/design/design-system.md](docs/design/design-system.md) · [frontend/styleguide/index.html](frontend/styleguide/index.html) |
 | Architecture & diagrams | [docs/architecture/architecture-description.md](docs/architecture/architecture-description.md) |
 | Verification & evaluation plan | [docs/verification/verification-and-evaluation-plan.md](docs/verification/verification-and-evaluation-plan.md) |
 | Project management, risks | [docs/management/project-management.md](docs/management/project-management.md) |

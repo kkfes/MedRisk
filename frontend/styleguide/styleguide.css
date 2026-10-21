@@ -1,0 +1,239 @@
+/* ============================================================================
+ * MedRisk Style Guide — page layout only
+ * ----------------------------------------------------------------------------
+ * Task: DIP-19
+ *
+ * This file styles the *style guide page itself* (grids, swatches, demo
+ * rows). The components that are demonstrated on the page are NOT styled
+ * here: they come from ../src/styles/components.css, so the guide shows the
+ * real component styles and not a copy of them.
+ * ========================================================================== */
+
+@import url("../src/styles/tokens.css");
+@import url("../src/styles/components.css");
+
+.guide-header {
+  background: var(--color-surface);
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding: var(--space-6) var(--layout-gutter);
+}
+
+.guide-header__inner,
+.guide-main {
+  max-width: var(--layout-content-max-width);
+  margin: 0 auto;
+}
+
+.guide-header__title {
+  margin-bottom: var(--space-2);
+}
+
+.guide-header__meta {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.guide-nav {
+  margin-top: var(--space-4);
+}
+
+.guide-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-sm);
+}
+
+.guide-main {
+  padding: var(--space-8) var(--layout-gutter) var(--space-16);
+}
+
+.guide-section {
+  margin-bottom: var(--space-12);
+}
+
+.guide-section__intro {
+  max-width: 70ch;
+  color: var(--color-text-muted);
+}
+
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.demo--stack {
+  display: block;
+}
+
+.demo__label {
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.demo + .demo { margin-top: var(--space-4); }
+
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+.swatch {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.swatch__chip {
+  height: 56px;
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.swatch__body { padding: var(--space-3) var(--space-4); }
+
+.swatch__name {
+  display: block;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.swatch__value {
+  display: block;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.swatch__use {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.type-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding: var(--space-3) 0;
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.type-row__meta {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.type-row__sample { color: var(--color-text); }
+
+.space-scale {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-4);
+}
+
+.space-scale__item { text-align: center; }
+
+.space-scale__bar {
+  background: var(--color-primary-subtle);
+  border: var(--border-width) solid var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.space-scale__label {
+  display: block;
+  margin-top: var(--space-2);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.tokens-list {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-md);
+}
+
+.tokens-list th,
+.tokens-list td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--border-width) solid var(--color-border);
+  text-align: left;
+}
+
+.tokens-list thead th {
+  background: var(--color-surface-muted);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.tokens-list code { color: var(--color-text); }
+
+.state-note {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Demo-only: force a state that is normally produced by an interaction, so
+ * that the guide can show every state of a component side by side. */
+.demo .state-hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.demo .state-active {
+  background: var(--color-primary-active);
+  border-color: var(--color-primary-active);
+}
+
+.demo .state-secondary-hover {
+  background: var(--color-primary-subtle);
+  border-color: var(--color-primary-hover);
+}
+
+.demo .state-danger-hover {
+  background: var(--color-danger-hover);
+  border-color: var(--color-danger-hover);
+}
+
+.demo .state-focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.guide-footer {
+  padding: var(--space-6) var(--layout-gutter);
+  border-top: var(--border-width) solid var(--color-border);
+  background: var(--color-surface);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .type-row { grid-template-columns: 1fr; }
+}

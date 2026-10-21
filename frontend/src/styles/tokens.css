@@ -1,0 +1,162 @@
+/* ============================================================================
+ * MedRisk Design Tokens
+ * ----------------------------------------------------------------------------
+ * Task: DIP-19 (design system: colors, typography, components)
+ * Stage: pre-defense 0 (M0) / M1
+ *
+ * This file is the single source of truth for the visual language of MedRisk.
+ * It contains **no component rules** — only the values. Component rules live in
+ * the component stylesheets and consume these variables.
+ *
+ * Usage:
+ *   @import url("./tokens.css");
+ *
+ * Rules:
+ *   1. Every colour token has a documented purpose. There are no "one-off" colours.
+ *   2. Every foreground/background pair used for text or for a meaningful UI
+ *      boundary was verified against WCAG 2.1 AA:
+ *        - normal text  >= 4.5:1
+ *        - large text   >= 3:1   (>= 18.66 px bold or >= 24 px)
+ *        - UI boundary  >= 3:1
+ *      The measured ratios are tabulated in docs/design/design-system.md §2.
+ *   3. Risk levels are never encoded by colour alone: each level always ships
+ *      with a text label and a symbol (see the --risk-* tokens below).
+ *   4. The prototype in /prototype uses the same values (aligned in DIP-8), so the
+ *      mockups and the product do not drift apart.
+ * ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------- colour */
+  /* Brand — the teal used for primary actions, links and focus. */
+  --color-primary: #0a6b56;
+  --color-primary-hover: #07503f;
+  --color-primary-active: #053e31;
+  --color-primary-subtle: #e3f4f0;
+  --color-primary-ring: #0a6b56;
+
+  /* Surfaces */
+  --color-bg: #f4f7f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef2f1;
+  --color-border: #d8e3e0;
+  --color-border-strong: #6d8880;
+
+  /* Text */
+  --color-text: #15211f;
+  --color-text-muted: #4d5f5b;
+  --color-text-heading: #07503f;
+  --color-text-inverse: #ffffff;
+
+  /* Feedback */
+  --color-success: #0b5c3c;
+  --color-success-subtle: #e3f5ec;
+  --color-warning: #7a5200;
+  --color-warning-subtle: #fdf1d6;
+  --color-danger: #8c1f1f;
+  --color-danger-hover: #6f1717;
+  --color-danger-subtle: #fbe0e0;
+  --color-note: #5f5010;
+  --color-note-subtle: #fffbe6;
+
+  /* Risk levels — text colour on the matching subtle background. */
+  --color-risk-low: #0b5c3c;
+  --color-risk-low-subtle: #e3f5ec;
+  --color-risk-moderate: #7a5200;
+  --color-risk-moderate-subtle: #fdf1d6;
+  --color-risk-high: #8a3b00;
+  --color-risk-high-subtle: #fde8dc;
+  --color-risk-very-high: #8c1f1f;
+  --color-risk-very-high-subtle: #fbe0e0;
+
+  /* Chart */
+  --color-chart-grid: #d8e3e0;
+  --color-chart-series-1: #07503f;
+  --color-chart-series-2: #8a3b00;
+
+  /* ----------------------------------------------------------- typography */
+  --font-family-base: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: "Cascadia Code", "SF Mono", Consolas, "Liberation Mono", monospace;
+
+  --font-size-xs: 0.78rem;   /* 12.5 px — uppercase table headers          */
+  --font-size-sm: 0.84rem;   /* 13.4 px — hints, captions                   */
+  --font-size-md: 0.92rem;   /* 14.7 px — labels, secondary body           */
+  --font-size-base: 1rem;    /* 16.0 px — body text                         */
+  --font-size-lg: 1.2rem;    /* 19.2 px — section headings                  */
+  --font-size-xl: 1.75rem;   /* 28.0 px — page titles                       */
+  --font-size-2xl: 2.6rem;   /* 41.6 px — the risk number                   */
+
+  --line-height-tight: 1.25;
+  --line-height-base: 1.55;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-wide: 0.06em;
+
+  /* ------------------------------------------------------------- spacing */
+  /* 4 px base scale. Use the scale, not arbitrary values. */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* -------------------------------------------------------------- radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* -------------------------------------------------------------- shadow */
+  --shadow-sm: 0 1px 3px rgba(16, 42, 37, 0.08);
+  --shadow-md: 0 2px 10px rgba(16, 42, 37, 0.08);
+
+  /* -------------------------------------------------------------- border */
+  --border-width: 1px;
+  --border-width-strong: 2px;
+
+  /* --------------------------------------------------------------- focus */
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--color-primary-ring);
+
+  /* ------------------------------------------------------------ controls */
+  --control-height-sm: 36px;
+  --control-height-md: 44px;
+  --control-padding-x: 22px;
+  --control-padding-y: 11px;
+  --input-padding-x: 12px;
+  --input-padding-y: 10px;
+
+  /* -------------------------------------------------------------- layout */
+  --layout-max-width: 1080px;
+  --layout-content-max-width: 980px;
+  --layout-gutter: 20px;
+  --layout-header-height: 56px;
+
+  /* -------------------------------------------------------------- motion */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0.2, 1);
+
+  /* ---------------------------------------------------------- breakpoints */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 760px;
+  --breakpoint-lg: 1080px;
+
+  /* ------------------------------------------------------- z-index scale */
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-dropdown: 100;
+  --z-skip-link: 200;
+}

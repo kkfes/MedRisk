@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MedRisk design system — style guide (DIP-19)</title>
+  <meta name="description" content="Static style guide for the MedRisk design system: colour tokens, typography, spacing and the component inventory.">
+  <link rel="stylesheet" href="styleguide.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to the main content</a>
+
+  <header class="guide-header">
+    <div class="guide-header__inner">
+      <h1 class="guide-header__title">MedRisk design system</h1>
+      <p class="guide-header__meta">
+        Style guide · task DIP-19 · author Sara Mukhammad (SE-2419) ·
+        version 1.0 (M1) · documentation:
+        <a href="../../docs/design/design-system.md">docs/design/design-system.md</a>
+      </p>
+      <nav class="guide-nav" aria-label="Style guide sections">
+        <ul>
+          <li><a href="#colour">Colour</a></li>
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#spacing">Spacing</a></li>
+          <li><a href="#components">Components</a></li>
+          <li><a href="#accessibility">Accessibility</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="guide-main" id="main">
+
+    <!-- ================================================================ -->
+    <section class="guide-section" aria-labelledby="about-heading">
+      <h2 id="about-heading">About this guide</h2>
+      <p class="guide-section__intro">
+        This page is the live view of the MedRisk design system. It is a static
+        HTML/CSS file — no build step, no JavaScript — so it can be opened from
+        disk or served from any static host. Every value shown here comes from
+        <code>frontend/src/styles/tokens.css</code>; the components come from
+        <code>frontend/src/styles/components.css</code>. Nothing is styled twice.
+      </p>
+      <div class="demo">
+        <p class="demo__label" style="margin:0;">How to open it</p>
+        <p style="margin:0;">
+          <code>cd frontend/styleguide</code> and open <code>index.html</code> in a browser,
+          or run <code>python -m http.server 8000 --directory frontend/styleguide</code>
+          from the repository root.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <section class="guide-section" aria-labelledby="colour-heading">
+      <h2 id="colour-heading">Colour</h2>
+      <p class="guide-section__intro">
+        One hue family (teal) for the brand and a warm amber-to-red ramp for the risk
+        levels. Every token below has exactly one documented purpose; there are no
+        "one-off" colours. The contrast ratio of each text pair is measured and
+        published in <a href="../../docs/design/design-system.md">design-system.md §2.2</a>.
+      </p>
+
+      <h3>Brand and surfaces</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-primary);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-primary</span>
+            <span class="swatch__value">#0a6b56</span>
+            <span class="swatch__use">Primary button, links, active navigation item</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-primary-hover);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-primary-hover</span>
+            <span class="swatch__value">#07503f</span>
+            <span class="swatch__use">Hover state, secondary button label</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-primary-active);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-primary-active</span>
+            <span class="swatch__value">#053e31</span>
+            <span class="swatch__use">Pressed state of a primary button</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-primary-subtle);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-primary-subtle</span>
+            <span class="swatch__value">#e3f4f0</span>
+            <span class="swatch__use">Selected option, subtle brand fill</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-bg);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-bg</span>
+            <span class="swatch__value">#f4f7f6</span>
+            <span class="swatch__use">Page background</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-surface);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-surface</span>
+            <span class="swatch__value">#ffffff</span>
+            <span class="swatch__use">Card and panel background</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-surface-muted);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-surface-muted</span>
+            <span class="swatch__value">#eef2f1</span>
+            <span class="swatch__use">Table header row, inset areas, disabled button</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-border);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-border</span>
+            <span class="swatch__value">#d8e3e0</span>
+            <span class="swatch__use">Decorative dividers only — not a control boundary</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-border-strong);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-border-strong</span>
+            <span class="swatch__value">#6d8880</span>
+            <span class="swatch__use">Border of an input, a button or a checkbox</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Text</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-text);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-text</span>
+            <span class="swatch__value">#15211f</span>
+            <span class="swatch__use">Body text — 16.55:1 on the surface</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-text-muted);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-text-muted</span>
+            <span class="swatch__value">#4d5f5b</span>
+            <span class="swatch__use">Hints, captions, secondary text — 6.77:1 on the surface</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-text-heading);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-text-heading</span>
+            <span class="swatch__value">#07503f</span>
+            <span class="swatch__use">Headings — 9.42:1 on the surface</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-text-inverse); border-bottom-color: var(--color-border);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-text-inverse</span>
+            <span class="swatch__value">#ffffff</span>
+            <span class="swatch__use">Text on a dark brand background</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Feedback</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-success-subtle);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-success / -subtle</span>
+            <span class="swatch__value">#0b5c3c / #e3f5ec</span>
+            <span class="swatch__use">Success message — 7.10:1</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-warning-subtle);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-warning / -subtle</span>
+            <span class="swatch__value">#7a5200 / #fdf1d6</span>
+            <span class="swatch__use">Warning message — 6.17:1</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-danger-subtle);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-danger / -subtle</span>
+            <span class="swatch__value">#8c1f1f / #fbe0e0</span>
+            <span class="swatch__use">Error message, destructive action — 7.22:1</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-note-subtle);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-note / -subtle</span>
+            <span class="swatch__value">#5f5010 / #fffbe6</span>
+            <span class="swatch__use">Notice about mockup / illustrative data — 7.64:1</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Risk levels</h3>
+      <p class="guide-section__intro">
+        A risk level is <strong>never</strong> communicated by colour alone: each level
+        carries a symbol and a text label, so the meaning survives a colour-vision
+        deficiency, a greyscale print and a bright screen.
+      </p>
+      <div class="demo">
+        <span class="risk-badge risk-badge--low"><span class="risk-badge__symbol" aria-hidden="true">●</span> Low risk</span>
+        <span class="risk-badge risk-badge--moderate"><span class="risk-badge__symbol" aria-hidden="true">◆</span> Moderate risk</span>
+        <span class="risk-badge risk-badge--high"><span class="risk-badge__symbol" aria-hidden="true">▲</span> High risk</span>
+        <span class="risk-badge risk-badge--very-high"><span class="risk-badge__symbol" aria-hidden="true">■</span> Very high risk</span>
+      </div>
+
+      <h3>Chart</h3>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-chart-series-1);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-chart-series-1</span>
+            <span class="swatch__value">#07503f</span>
+            <span class="swatch__use">Cardiovascular risk — solid line</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-chart-series-2);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-chart-series-2</span>
+            <span class="swatch__value">#8a3b00</span>
+            <span class="swatch__use">Type 2 diabetes risk — dashed line</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: var(--color-chart-grid);"></div>
+          <div class="swatch__body">
+            <span class="swatch__name">--color-chart-grid</span>
+            <span class="swatch__value">#d8e3e0</span>
+            <span class="swatch__use">Grid lines — decorative</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <section class="guide-section" aria-labelledby="typography-heading">
+      <h2 id="typography-heading">Typography</h2>
+      <p class="guide-section__intro">
+        System font stack (<code>--font-family-base</code>): no web font is downloaded, so
+        the first paint is never blocked by a network request. The base size is 16 px and
+        is never reduced — the layout must stay usable at 200 % browser zoom.
+      </p>
+
+      <div class="type-row">
+        <span class="type-row__meta">--font-size-2xl · 2.6 rem · 800</span>
+        <span class="type-row__sample" style="font-size: var(--font-size-2xl); font-weight: var(--font-weight-extrabold); line-height: var(--line-height-tight);">18 %</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">--font-size-xl · 1.75 rem · 700</span>
+        <span class="type-row__sample" style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); line-height: var(--line-height-tight);">Your risk report</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">--font-size-lg · 1.2 rem · 700</span>
+        <span class="type-row__sample" style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); line-height: var(--line-height-tight);">Factors that raised the estimate</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">--font-size-base · 1 rem · 400</span>
+        <span class="type-row__sample">Body text. The estimate is based on the answers you gave and on the measurements you entered.</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">--font-size-md · 0.92 rem · 600</span>
+        <span class="type-row__sample" style="font-size: var(--font-size-md); font-weight: var(--font-weight-semibold);">Label of a form field</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">--font-size-sm · 0.84 rem · 400</span>
+        <span class="type-row__sample" style="font-size: var(--font-size-sm);">Hint under a field — for example, in millimetres of mercury.</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">--font-size-xs · 0.78 rem · 700</span>
+        <span class="type-row__sample" style="font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-wide); text-transform: uppercase;">TABLE HEADER</span>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <section class="guide-section" aria-labelledby="spacing-heading">
+      <h2 id="spacing-heading">Spacing, radius, shadow and focus</h2>
+      <p class="guide-section__intro">
+        A 4 px base scale. Only the scale values are used — a spacing value that is not on
+        the scale is a bug.
+      </p>
+
+      <div class="space-scale">
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-1); height: 24px;"></div>
+          <span class="space-scale__label">4</span>
+        </div>
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-2); height: 24px;"></div>
+          <span class="space-scale__label">8</span>
+        </div>
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-3); height: 24px;"></div>
+          <span class="space-scale__label">12</span>
+        </div>
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-4); height: 24px;"></div>
+          <span class="space-scale__label">16</span>
+        </div>
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-5); height: 24px;"></div>
+          <span class="space-scale__label">20</span>
+        </div>
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-6); height: 24px;"></div>
+          <span class="space-scale__label">24</span>
+        </div>
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-8); height: 24px;"></div>
+          <span class="space-scale__label">32</span>
+        </div>
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-10); height: 24px;"></div>
+          <span class="space-scale__label">40</span>
+        </div>
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-12); height: 24px;"></div>
+          <span class="space-scale__label">48</span>
+        </div>
+        <div class="space-scale__item">
+          <div class="space-scale__bar" style="width: var(--space-16); height: 24px;"></div>
+          <span class="space-scale__label">64</span>
+        </div>
+      </div>
+
+      <h3>Radius and elevation</h3>
+      <div class="demo">
+        <div class="card" style="margin:0; width: 220px;">
+          <h4 class="card__title">--radius-md · 12 px</h4>
+          <p style="margin:0; font-size: var(--font-size-sm); color: var(--color-text-muted);">
+            Cards use --shadow-md. Buttons and inputs use --radius-sm (8 px),
+            badges and progress bars use --radius-full.
+          </p>
+        </div>
+      </div>
+
+      <h3>Focus indicator</h3>
+      <div class="demo">
+        <button class="btn state-focus" type="button">Focus state</button>
+        <span class="state-note" style="margin:0;">
+          Every interactive element gets a 3 px outline with a 2 px offset.
+          The outline is never removed and never relies on box-shadow alone.
+        </span>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <section class="guide-section" aria-labelledby="components-heading">
+      <h2 id="components-heading">Components</h2>
+      <p class="guide-section__intro">
+        The inventory below is the same list as in
+        <a href="../../docs/design/design-system.md">design-system.md §6</a>. The React
+        versions are produced in M4 (DIP-35 … DIP-38) and must consume the same tokens.
+      </p>
+
+      <!-- 6.1 button -->
+      <section aria-labelledby="button-heading">
+        <h3 id="button-heading">6.1 Button</h3>
+        <div class="demo">
+          <button class="btn" type="button">Show my risk report</button>
+          <button class="btn btn--secondary" type="button">Cancel and go back</button>
+          <button class="btn btn--danger" type="button">Delete account</button>
+        </div>
+        <div class="demo">
+          <button class="btn state-hover" type="button">Hover</button>
+          <button class="btn state-active" type="button">Pressed</button>
+          <button class="btn btn--secondary state-secondary-hover" type="button">Secondary hover</button>
+          <button class="btn btn--danger state-danger-hover" type="button">Danger hover</button>
+          <button class="btn" type="button" disabled>Disabled</button>
+          <button class="btn" type="button" aria-busy="true">Working…</button>
+        </div>
+        <p class="state-note">
+          One primary button per screen. The minimum target size is 44 px
+          (<code>--control-height-md</code>). A disabled button stays in the DOM and is
+          explained by a hint — it is not hidden. The loading state uses
+          <code>aria-busy="true"</code> and keeps its width, so the layout does not jump.
+        </p>
+      </section>
+
+      <!-- 6.2 text field -->
+      <section aria-labelledby="field-heading">
+        <h3 id="field-heading">6.2 Text field</h3>
+        <div class="demo demo--stack">
+          <div class="field" style="margin-bottom: var(--space-4);">
+            <label class="field__label" for="sg-age">Age</label>
+            <p class="field__hint" id="sg-age-hint">In complete years, from 30 to 70.</p>
+            <input class="field__input" id="sg-age" name="sg-age" type="number" min="30" max="70"
+                   inputmode="numeric" value="42" aria-describedby="sg-age-hint">
+          </div>
+
+          <div class="field field--invalid" style="margin-bottom: var(--space-4);">
+            <label class="field__label" for="sg-systolic">Systolic blood pressure</label>
+            <p class="field__hint" id="sg-systolic-hint">The upper number, in mmHg.</p>
+            <input class="field__input" id="sg-systolic" name="sg-systolic" type="number"
+                   inputmode="numeric" value="128" aria-describedby="sg-systolic-hint sg-systolic-error"
+                   aria-invalid="true">
+            <p class="field__error" id="sg-systolic-error">Enter a number between 90 and 200. Example: 128</p>
+          </div>
+
+          <div class="field" style="margin-bottom: 0;">
+            <label class="field__label" for="sg-disabled">Field that cannot be changed right now</label>
+            <p class="field__hint" id="sg-disabled-hint">The value comes from your saved report.</p>
+            <input class="field__input" id="sg-disabled" name="sg-disabled" type="text"
+                   value="Saved on 12 May" aria-describedby="sg-disabled-hint" disabled>
+          </div>
+        </div>
+        <p class="state-note">
+          Every field has a visible label; a placeholder is never the only label. The error
+          message is below the field and connected with <code>aria-describedby</code>; the
+          invalid field also carries <code>aria-invalid="true"</code> and a 2 px danger
+          border, because the border alone is not enough.
+        </p>
+      </section>
+
+      <!-- 6.3 checkbox and radio -->
+      <section aria-labelledby="choice-heading">
+        <h3 id="choice-heading">6.3 Checkbox and radio</h3>
+        <div class="demo demo--stack">
+          <fieldset class="choice-group">
+            <legend class="choice-group__legend">Do you smoke?</legend>
+            <div class="choice-group__options">
+              <label class="choice" for="sg-smoke-never">
+                <input type="radio" id="sg-smoke-never" name="sg-smoke" value="never" checked>
+                <span>Never</span>
+              </label>
+              <label class="choice" for="sg-smoke-former">
+                <input type="radio" id="sg-smoke-former" name="sg-smoke" value="former">
+                <span>Former smoker</span>
+              </label>
+              <label class="choice" for="sg-smoke-current">
+                <input type="radio" id="sg-smoke-current" name="sg-smoke" value="current">
+                <span>Current smoker</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="choice-group" style="margin-bottom: 0;">
+            <legend class="choice-group__legend">Optional measurements you want to include</legend>
+            <div class="choice-group__options">
+              <label class="choice" for="sg-optional-cholesterol">
+                <input type="checkbox" id="sg-optional-cholesterol" name="sg-optional" value="cholesterol" checked>
+                <span>Blood cholesterol</span>
+              </label>
+              <label class="choice" for="sg-optional-glucose">
+                <input type="checkbox" id="sg-optional-glucose" name="sg-optional" value="glucose">
+                <span>Blood glucose</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <p class="state-note">
+          The chip is the click target, the native control stays visible and keeps the
+          selected state. A radio group is a <code>fieldset</code> with a
+          <code>legend</code>: it is one tab stop and the arrow keys move inside it.
+        </p>
+      </section>
+
+      <!-- 6.4 card -->
+      <section aria-labelledby="card-heading">
+        <h3 id="card-heading">6.4 Card</h3>
+        <div class="demo">
+          <div class="card" style="margin:0; width: 100%;">
+            <h4 class="card__title">Card title</h4>
+            <p style="margin:0;">
+              Cards are the only container for grouped content on the report and the
+              history screens. The background is the surface colour, the border is the
+              decorative divider, the radius is 12 px and the elevation is
+              <code>--shadow-md</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6.5 result table -->
+      <section aria-labelledby="table-heading">
+        <h3 id="table-heading">6.5 Result table</h3>
+        <div class="demo demo--stack">
+          <table class="result-table">
+            <caption>Previous assessments. The change is written in words, not by colour alone.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Cardiovascular risk</th>
+                <th scope="col">Diabetes risk</th>
+                <th scope="col">Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">12 May 2026</th>
+                <td>14 %</td>
+                <td>9 %</td>
+                <td>−1.3 pp (down)</td>
+              </tr>
+              <tr>
+                <th scope="row">12 February 2026</th>
+                <td>15.3 %</td>
+                <td>10 %</td>
+                <td>— (first report)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="state-note">
+          The table is the accessible equivalent of the trend chart and is always present
+          when the chart is shown. Column headers use <code>scope="col"</code>, row headers
+          use <code>scope="row"</code>.
+        </p>
+      </section>
+
+      <!-- 6.6 disclaimer banners -->
+      <section aria-labelledby="disclaimer-heading">
+        <h3 id="disclaimer-heading">6.6 Disclaimer banner</h3>
+        <div class="demo demo--stack">
+          <div class="disclaimer-top">
+            <strong>This is a risk estimate, not a diagnosis.</strong>
+            The number is calculated from the answers and measurements you entered.
+            It cannot replace a consultation with a doctor.
+          </div>
+          <div class="disclaimer">
+            This tool cannot tell you whether you are ill. Only a licensed physician can
+            diagnose you and decide what to do. If you feel unwell, contact a doctor or
+            an emergency service.
+          </div>
+          <div class="notice">
+            The numbers on this page are an illustrative example for the design review.
+            They are not a result of the model.
+          </div>
+        </div>
+        <p class="state-note">
+          Both disclaimer variants are mandatory on any screen that shows a risk number.
+          The disclaimer is never inside a collapsible element, never shortened to an icon
+          and never replaced by an image.
+        </p>
+      </section>
+
+      <!-- 6.7 risk badge -->
+      <section aria-labelledby="badge-heading">
+        <h3 id="badge-heading">6.7 Risk badge</h3>
+        <div class="demo">
+          <span class="risk-badge risk-badge--low"><span class="risk-badge__symbol" aria-hidden="true">●</span> Low risk</span>
+          <span class="risk-badge risk-badge--moderate"><span class="risk-badge__symbol" aria-hidden="true">◆</span> Moderate risk</span>
+          <span class="risk-badge risk-badge--high"><span class="risk-badge__symbol" aria-hidden="true">▲</span> High risk</span>
+          <span class="risk-badge risk-badge--very-high"><span class="risk-badge__symbol" aria-hidden="true">■</span> Very high risk</span>
+        </div>
+        <p class="state-note">
+          The symbol is hidden from the screen reader, because the text label already
+          carries the meaning. The border repeats the text colour, so the badge is still
+          recognisable without the fill.
+        </p>
+      </section>
+
+      <!-- 6.8 progress -->
+      <section aria-labelledby="progress-heading">
+        <h3 id="progress-heading">6.8 Progress indicator</h3>
+        <div class="demo demo--stack">
+          <progress class="progress" value="5" max="12" aria-valuetext="5 of 12 questions answered"></progress>
+          <p class="progress__label">
+            5 of 12 questions answered · 3 of 8 required questions are still missing ·
+            4 optional measurements can be skipped
+          </p>
+        </div>
+        <p class="state-note">
+          The native <code>progress</code> element is used with <code>max</code>,
+          <code>value</code> and <code>aria-valuetext</code> — the raw number "5" means
+          nothing to a screen reader. The visible text repeats the same information in words.
+        </p>
+      </section>
+
+      <!-- 6.9 factor bar -->
+      <section aria-labelledby="factor-heading">
+        <h3 id="factor-heading">6.9 Factor bar</h3>
+        <div class="demo demo--stack">
+          <div class="factor">
+            <span class="factor__name">High blood pressure</span>
+            <div class="factor__direction">▲ increases the estimate · 88 % of the largest contribution in this example</div>
+            <div class="factor__bar" aria-hidden="true"><span class="is-up" style="width: 88%;"></span></div>
+          </div>
+          <div class="factor" style="margin-bottom: 0;">
+            <span class="factor__name">Physical activity</span>
+            <div class="factor__direction">▼ decreases the estimate · 31 % of the largest contribution in this example</div>
+            <div class="factor__bar" aria-hidden="true"><span class="is-down" style="width: 31%;"></span></div>
+          </div>
+        </div>
+        <p class="state-note">
+          The bar itself is decorative and hidden from assistive technology. The direction
+          is always written as a word plus a symbol, and the magnitude is given in words.
+        </p>
+      </section>
+
+      <!-- 6.10 chart legend -->
+      <section aria-labelledby="legend-heading">
+        <h3 id="legend-heading">6.10 Chart legend</h3>
+        <div class="demo">
+          <ul class="chart-legend">
+            <li class="chart-legend__item">
+              <span class="chart-legend__swatch" aria-hidden="true"></span>
+              Cardiovascular disease — solid line
+            </li>
+            <li class="chart-legend__item">
+              <span class="chart-legend__swatch chart-legend__swatch--dashed" aria-hidden="true"></span>
+              Type 2 diabetes — dashed line
+            </li>
+          </ul>
+        </div>
+        <p class="state-note">
+          The legend states the line style, not only the colour, so the two series remain
+          distinguishable in a greyscale print.
+        </p>
+      </section>
+    </section>
+
+    <!-- ================================================================ -->
+    <section class="guide-section" aria-labelledby="accessibility-heading">
+      <h2 id="accessibility-heading">Accessibility rules</h2>
+      <p class="guide-section__intro">
+        The design system targets WCAG 2.1 level AA. The rules below are not optional
+        style preferences — a component that breaks one of them is a defect.
+      </p>
+      <table class="result-table">
+        <caption>Accessibility contract of the MedRisk components.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Rule</th>
+            <th scope="col">How it is implemented</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Text contrast ≥ 4.5:1</th><td>Measured for every token pair in design-system.md §2.2 — 30 of 30 pass.</td></tr>
+          <tr><th scope="row">UI boundary ≥ 3:1</th><td><code>--color-border-strong</code> on the surface (3.83:1) and on the page background (3.55:1).</td></tr>
+          <tr><th scope="row">Visible focus</th><td>3 px outline with a 2 px offset on every interactive element; never removed.</td></tr>
+          <tr><th scope="row">No meaning by colour alone</th><td>Risk badge = symbol + text; deltas = word + number; chart legend = line style.</td></tr>
+          <tr><th scope="row">Programmatic names</th><td><code>&lt;label for&gt;</code>, <code>&lt;fieldset&gt;</code>/<code>&lt;legend&gt;</code>, <code>aria-label</code>.</td></tr>
+          <tr><th scope="row">Errors linked to the field</th><td><code>aria-describedby</code> + <code>aria-invalid</code> + an error summary above the form.</td></tr>
+          <tr><th scope="row">Landmarks</th><td><code>header</code>, <code>nav[aria-label]</code>, <code>main</code>, <code>footer</code> and a skip link.</td></tr>
+          <tr><th scope="row">Language</th><td><code>lang="en"</code> on the root element of every page.</td></tr>
+          <tr><th scope="row">Chart text equivalent</th><td><code>&lt;svg role="img"&gt;</code> with <code>&lt;title&gt;</code>/<code>&lt;desc&gt;</code> plus a data table.</td></tr>
+          <tr><th scope="row">Reduced motion</th><td>All transitions are disabled under <code>prefers-reduced-motion: reduce</code>.</td></tr>
+          <tr><th scope="row">Target size ≥ 44 × 44 px</th><td><code>--control-height-md</code> on every control.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="guide-footer">
+    <p style="margin:0;">
+      MedRisk design system · DIP-19 · Sara Mukhammad (SE-2419) ·
+      tokens: <code>frontend/src/styles/tokens.css</code>
+    </p>
+    <p style="margin: var(--space-2) 0 0;">
+      Risk estimates only — not a diagnosis. Consult a licensed physician.
+    </p>
+  </footer>
+
+</body>
+</html>
