@@ -3,68 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MedRisk — an educational decision-support prototype that estimates 10-year cardiovascular and type 2 diabetes risk from a short health questionnaire.">
 <title>MedRisk — Intelligent Disease Risk Assessment</title>
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<header class="site">
-  <a class="logo" href="index.html"><span class="mark">MR</span> MedRisk</a>
-  <nav>
-    <a href="index.html" class="active">Home</a>
-    <a href="assessment.html">Assessment</a>
-    <a href="dashboard.html">History</a>
-    <a href="#">Log in</a>
-  </nav>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark" aria-hidden="true">MR</span>
+      <span class="logo-text">MedRisk</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="assessment.html">Assessment</a></li>
+        <li><a href="dashboard.html">History</a></li>
+        <li><a href="login.html">Log in</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<main>
+<main id="main">
   <div class="banner">
     <h1>Know your cardiometabolic risk in 3 minutes</h1>
     <p class="lead">MedRisk estimates your 10-year risk of cardiovascular disease and type&nbsp;2
     diabetes from a short health questionnaire — and explains <em>which factors drive your result</em>
     in plain language. No lab visit required.</p>
-    <a class="btn" href="assessment.html">Start the assessment →</a>
-    <a class="btn secondary" href="#how">How it works</a>
+    <div class="actions">
+      <a class="btn" href="assessment.html">Start the assessment</a>
+      <a class="btn secondary" href="#how">How it works</a>
+    </div>
+    <p class="hint" style="margin-top:12px">Guest mode — you do not need an account to try the prototype.</p>
   </div>
 
-  <div class="mockup-note">Prototype mockup (pre-defense 0). <strong>These pages are an early
-  design sketch, not the final design</strong> — layout, colors and texts will be revised after
-  user feedback. Numbers below are illustrative; no real prediction model is running here,
-  and the backend shown in the docs is an approximate variant that may change.</div>
+  <div class="mockup-note">
+    <p style="margin:0"><strong>Prototype mockup (pre-defense 0, DIP-8).</strong> These pages are a
+    design sketch, not the final design, and no machine-learning model is running here. Every number
+    you see is an <em>illustrative example</em>, not a real model output. Layout, colours and wording
+    will change after the user interviews and the supervisor's review.</p>
+  </div>
 
   <div class="grid cols-3" id="how">
     <div class="card">
-      <h2 style="margin-top:0">1 · Answer</h2>
+      <h2>1 · Answer</h2>
       <p>12 simple questions about age, blood pressure, cholesterol, habits and family history.
-      Guest mode — no account required.</p>
+      Four measurement questions are optional — skip what you do not know.</p>
     </div>
     <div class="card">
-      <h2 style="margin-top:0">2 · Estimate</h2>
+      <h2>2 · Estimate</h2>
       <p>Machine-learning models validated against clinical baselines (Framingham, SCORE-style)
       compute two risks for the same input.</p>
     </div>
     <div class="card">
-      <h2 style="margin-top:0">3 · Understand</h2>
+      <h2>3 · Understand</h2>
       <p>Your personal top-5 risk factors, ranked and explained — so you know what to discuss
       with your doctor first.</p>
     </div>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0">What you get</h2>
+    <h2>What you get</h2>
     <table>
-      <tr><th>Report section</th><th>Contents</th></tr>
-      <tr><td>Cardiovascular risk</td><td>10-year probability, category (low / moderate / high / very high)</td></tr>
-      <tr><td>Diabetes risk</td><td>10-year probability, category, key metabolic factors</td></tr>
-      <tr><td>Factor attribution</td><td>Top contributing factors with direction and relative magnitude (SHAP)</td></tr>
-      <tr><td>Next steps</td><td>Plain-language suggestions; what to measure next; doctor-visit guidance</td></tr>
-      <tr><td>History <span class="hint">(account)</span></td><td>Past assessments and risk trends over time</td></tr>
+      <caption>Contents of the MedRisk report screen.</caption>
+      <tr><th scope="col">Report section</th><th scope="col">Contents</th></tr>
+      <tr><th scope="row">Cardiovascular risk</th><td>10-year probability, category (low / moderate / high / very high)</td></tr>
+      <tr><th scope="row">Diabetes risk</th><td>10-year probability, category, key metabolic factors</td></tr>
+      <tr><th scope="row">Factor attribution</th><td>Top contributing factors with direction and relative magnitude (SHAP)</td></tr>
+      <tr><th scope="row">Your input</th><td>The answers you gave, shown next to the estimate so you can check them</td></tr>
+      <tr><th scope="row">Who can help</th><td>Which doctor to contact and which measurements to bring with you</td></tr>
+      <tr><th scope="row">History <span class="hint">(account)</span></th><td>Past assessments and risk trends over time</td></tr>
     </table>
     <p class="disclaimer">MedRisk is an educational decision-support tool. It provides risk
-    estimates, <strong>not diagnoses</strong>. Always consult a licensed physician.</p>
+    estimates, <strong>not diagnoses</strong>, and it does not recommend treatment. Always consult a
+    licensed physician.</p>
+  </div>
+
+  <div class="card">
+    <h2>Who this prototype is for</h2>
+    <ul class="pill-list">
+      <li><strong>Adults 30–70</strong> — the primary user: no medical background, may have low health literacy.</li>
+      <li><strong>Primary-care professionals</strong> — secondary audience (planned for a later milestone).</li>
+      <li><strong>Administrators / researchers</strong> — manage models and evaluate model quality.</li>
+    </ul>
   </div>
 </main>
 
-<footer class="site">MedRisk · Diploma project, SE-2425 / SE-2429 / SE-2419 · Supervisor: A.&nbsp;Bakiyeva</footer>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>MedRisk · Diploma project (SE-2425 / SE-2429 / SE-2419) · Supervisor: A.&nbsp;Bakiyeva</p>
+    <p class="footer-disclaimer">Risk estimates only — not a diagnosis. Consult a licensed physician.</p>
+  </div>
+</footer>
 </body>
 </html>

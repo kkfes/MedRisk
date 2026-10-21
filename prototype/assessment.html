@@ -3,116 +3,220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Assessment questionnaire — MedRisk</title>
+<meta name="description" content="MedRisk health questionnaire — 12 questions about age, blood pressure, cholesterol, lifestyle and family history.">
+<title>Health questionnaire — MedRisk</title>
 <link rel="stylesheet" href="css/styles.css">
+<script src="js/prototype.js" defer></script>
 </head>
 <body>
-<header class="site">
-  <a class="logo" href="index.html"><span class="mark">MR</span> MedRisk</a>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="assessment.html" class="active">Assessment</a>
-    <a href="dashboard.html">History</a>
-    <a href="#">Log in</a>
-  </nav>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark" aria-hidden="true">MR</span>
+      <span class="logo-text">MedRisk</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assessment.html" aria-current="page">Assessment</a></li>
+        <li><a href="dashboard.html">History</a></li>
+        <li><a href="login.html">Log in</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<main>
+<main id="main">
+  <a class="back-link" href="index.html">&larr; Back to home</a>
+
   <h1>Health questionnaire</h1>
   <p class="lead">12 questions · about 3 minutes · guest mode, nothing is linked to your identity.</p>
-  <div class="mockup-note">Prototype mockup: the "Calculate" button shows a pre-built example
-  result; validation logic is not implemented here.</div>
 
-  <form action="result.html" method="get">
+  <div class="mockup-note">
+    <p style="margin:0"><strong>Prototype mockup (pre-defense 0, DIP-8).</strong> No machine-learning
+    model is running here: the button opens a <em>fixed illustrative example</em> report, and your own
+    answers are echoed back next to it. Real model output arrives with the API (DIP-18 / DIP-30).
+    The validation shown here is prototype-level; the production rules live in DIP-36.</p>
+  </div>
+
+  <div class="progress-block">
+    <div class="progress-head">
+      <span class="progress-label" id="progress-label">Questionnaire progress</span>
+      <span class="progress-text" id="progress-text" data-progress-text>0 of 12 questions answered</span>
+    </div>
+    <progress id="questionnaire-progress" data-progress-bar max="12" value="0"
+              aria-labelledby="progress-label" aria-describedby="progress-text">0 of 12</progress>
+  </div>
+
+  <div class="form-summary" data-form-summary role="alert" hidden>
+    <h2 data-form-summary-title>Please fix the fields below before continuing:</h2>
+    <ul data-form-summary-list></ul>
+  </div>
+
+  <form action="result.html" method="get" data-questionnaire novalidate>
     <div class="card">
-      <h2 style="margin-top:0">About you</h2>
-      <div class="grid cols-2">
-        <div>
-          <label for="age">Age <span class="hint">(18–90)</span></label>
-          <input type="number" id="age" name="age" min="18" max="90" value="52" required>
+      <h2>About you</h2>
+      <p class="hint" style="margin-top:0">These four questions are always required.</p>
+
+      <div class="field">
+        <label for="age">Age <span class="unit">(years, 18–90)</span></label>
+        <input type="number" id="age" name="age" min="18" max="90" step="1" inputmode="numeric"
+               placeholder="e.g. 45" required data-question
+               aria-describedby="age-hint age-error">
+        <p class="hint" id="age-hint">Used to compare your risk with people of the same age and sex.</p>
+        <p class="field-error" id="age-error" aria-live="polite"></p>
+      </div>
+
+      <fieldset>
+        <legend>Sex</legend>
+        <span class="hint">Used for age- and sex-specific reference values.</span>
+        <div class="radio-row">
+          <label class="choice"><input type="radio" id="sex-female" name="sex" value="female" required data-question
+                 aria-describedby="sex-error"> Female</label>
+          <label class="choice"><input type="radio" id="sex-male" name="sex" value="male" data-question
+                 aria-describedby="sex-error"> Male</label>
         </div>
-        <div>
-          <label>Sex</label>
-          <div class="radio-row">
-            <label><input type="radio" name="sex" value="female" checked> Female</label>
-            <label><input type="radio" name="sex" value="male"> Male</label>
-          </div>
-        </div>
-        <div>
-          <label for="height">Height, cm</label>
-          <input type="number" id="height" name="height" min="120" max="230" value="165">
-        </div>
-        <div>
-          <label for="weight">Weight, kg</label>
-          <input type="number" id="weight" name="weight" min="30" max="250" value="88">
-        </div>
+        <p class="field-error" id="sex-error" aria-live="polite"></p>
+      </fieldset>
+
+      <div class="field">
+        <label for="height">Height <span class="unit">(cm, 120–230)</span></label>
+        <input type="number" id="height" name="height" min="120" max="230" step="1" inputmode="numeric"
+               placeholder="e.g. 170" required data-question
+               aria-describedby="height-hint height-error">
+        <p class="hint" id="height-hint">Height and weight are combined into a body-mass index (BMI).</p>
+        <p class="field-error" id="height-error" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="weight">Weight <span class="unit">(kg, 30–250)</span></label>
+        <input type="number" id="weight" name="weight" min="30" max="250" step="0.5" inputmode="decimal"
+               placeholder="e.g. 72" required data-question
+               aria-describedby="weight-hint weight-error">
+        <p class="hint" id="weight-hint">A rough estimate is fine — this is a self-assessment, not a measurement.</p>
+        <p class="field-error" id="weight-error" aria-live="polite"></p>
       </div>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0">Measurements <span class="hint">(if you know them)</span></h2>
-      <div class="grid cols-2">
-        <div>
-          <label for="sbp">Systolic blood pressure, mmHg</label>
-          <input type="number" id="sbp" name="sbp" min="80" max="250" value="142">
-        </div>
-        <div>
-          <label for="tc">Total cholesterol, mmol/L</label>
-          <input type="number" id="tc" name="tc" min="2" max="15" step="0.1" value="5.9">
-        </div>
-        <div>
-          <label for="hdl">HDL cholesterol, mmol/L</label>
-          <input type="number" id="hdl" name="hdl" min="0.5" max="4" step="0.1" value="1.1">
-        </div>
-        <div>
-          <label for="glucose">Fasting glucose, mmol/L</label>
-          <input type="number" id="glucose" name="glucose" min="2" max="30" step="0.1" value="6.4">
-        </div>
+      <h2>Measurements <span class="hint">(optional — leave empty if you do not know)</span></h2>
+      <p class="hint" style="margin-top:0">These four questions are optional. The models are trained to
+      work with missing values, so skipping them is better than guessing. A more complete answer usually
+      gives a more stable estimate.</p>
+
+      <div class="field">
+        <label for="sbp">Systolic blood pressure <span class="unit">(mmHg, 80–250)</span></label>
+        <input type="number" id="sbp" name="sbp" min="80" max="250" step="1" inputmode="numeric"
+               placeholder="e.g. 120" data-question data-optional
+               aria-describedby="sbp-hint sbp-error">
+        <p class="hint" id="sbp-hint">The higher of the two numbers, measured at rest.</p>
+        <p class="field-error" id="sbp-error" aria-live="polite"></p>
       </div>
-      <p class="hint">Don't know a value? Leave it empty — the model was trained to handle missing inputs.</p>
+
+      <div class="field">
+        <label for="tc">Total cholesterol <span class="unit">(mmol/L, 2–15)</span></label>
+        <input type="number" id="tc" name="tc" min="2" max="15" step="0.1" inputmode="decimal"
+               placeholder="e.g. 4.6" data-question data-optional
+               aria-describedby="tc-hint tc-error">
+        <p class="hint" id="tc-hint">From a blood test, usually written as “total cholesterol” or “TC”.</p>
+        <p class="field-error" id="tc-error" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="hdl">HDL cholesterol <span class="unit">(mmol/L, 0.5–4)</span></label>
+        <input type="number" id="hdl" name="hdl" min="0.5" max="4" step="0.1" inputmode="decimal"
+               placeholder="e.g. 1.4" data-question data-optional
+               aria-describedby="hdl-hint hdl-error">
+        <p class="hint" id="hdl-hint">Often called “good cholesterol”.</p>
+        <p class="field-error" id="hdl-error" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="glucose">Fasting glucose <span class="unit">(mmol/L, 2–30)</span></label>
+        <input type="number" id="glucose" name="glucose" min="2" max="30" step="0.1" inputmode="decimal"
+               placeholder="e.g. 5.2" data-question data-optional
+               aria-describedby="glucose-hint glucose-error">
+        <p class="hint" id="glucose-hint">Blood sugar measured on an empty stomach.</p>
+        <p class="field-error" id="glucose-error" aria-live="polite"></p>
+      </div>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0">Lifestyle &amp; history</h2>
-      <div class="grid cols-2">
-        <div>
-          <label>Do you smoke?</label>
-          <div class="radio-row">
-            <label><input type="radio" name="smoker" value="no"> No</label>
-            <label><input type="radio" name="smoker" value="yes" checked> Yes</label>
-          </div>
+      <h2>Lifestyle &amp; history</h2>
+
+      <fieldset>
+        <legend>Do you smoke?</legend>
+        <span class="hint">Including cigarettes and hand-rolled tobacco.</span>
+        <div class="radio-row">
+          <label class="choice"><input type="radio" id="smoker-no" name="smoker" value="no" required data-question
+                 aria-describedby="smoker-error"> No</label>
+          <label class="choice"><input type="radio" id="smoker-yes" name="smoker" value="yes" data-question
+                 aria-describedby="smoker-error"> Yes</label>
+          <label class="choice"><input type="radio" id="smoker-former" name="smoker" value="former" data-question
+                 aria-describedby="smoker-error"> I used to, but I stopped</label>
         </div>
-        <div>
-          <label>Physical activity ≥ 150 min/week?</label>
-          <div class="radio-row">
-            <label><input type="radio" name="active" value="no" checked> No</label>
-            <label><input type="radio" name="active" value="yes"> Yes</label>
-          </div>
+        <p class="field-error" id="smoker-error" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Physical activity of at least 150 minutes per week?</legend>
+        <span class="hint">Walking briskly, cycling, swimming — anything that raises your heart rate.</span>
+        <div class="radio-row">
+          <label class="choice"><input type="radio" id="active-no" name="active" value="no" required data-question
+                 aria-describedby="active-error"> No</label>
+          <label class="choice"><input type="radio" id="active-yes" name="active" value="yes" data-question
+                 aria-describedby="active-error"> Yes</label>
         </div>
-        <div>
-          <label>Diagnosed with hypertension?</label>
-          <div class="radio-row">
-            <label><input type="radio" name="htn" value="no"> No</label>
-            <label><input type="radio" name="htn" value="yes" checked> Yes</label>
-          </div>
+        <p class="field-error" id="active-error" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Have you been diagnosed with high blood pressure (hypertension)?</legend>
+        <span class="hint">“Yes” means a doctor has told you about it at some point.</span>
+        <div class="radio-row">
+          <label class="choice"><input type="radio" id="htn-no" name="htn" value="no" required data-question
+                 aria-describedby="htn-error"> No</label>
+          <label class="choice"><input type="radio" id="htn-yes" name="htn" value="yes" data-question
+                 aria-describedby="htn-error"> Yes</label>
         </div>
-        <div>
-          <label>Family history of CVD or diabetes (first-degree relatives)?</label>
-          <div class="radio-row">
-            <label><input type="radio" name="famhist" value="no"> No</label>
-            <label><input type="radio" name="famhist" value="yes" checked> Yes</label>
-          </div>
+        <p class="field-error" id="htn-error" aria-live="polite"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Do any of your parents or siblings have heart disease or diabetes?</legend>
+        <span class="hint">First-degree relatives only.</span>
+        <div class="radio-row">
+          <label class="choice"><input type="radio" id="famhist-no" name="famhist" value="no" required data-question
+                 aria-describedby="famhist-error"> No</label>
+          <label class="choice"><input type="radio" id="famhist-yes" name="famhist" value="yes" data-question
+                 aria-describedby="famhist-error"> Yes</label>
         </div>
-      </div>
+        <p class="field-error" id="famhist-error" aria-live="polite"></p>
+      </fieldset>
     </div>
 
-    <button type="submit" class="btn block">Calculate my risk</button>
-    <p class="disclaimer" style="margin-top:16px">This tool gives an educational risk estimate,
-    not a diagnosis. If you have symptoms (chest pain, shortness of breath, fainting) —
-    seek emergency care now.</p>
+    <div class="card">
+      <h2>Finish</h2>
+      <p style="margin-top:0">You can leave the four measurement questions empty — the minimum is
+      8 answered questions.</p>
+      <div class="actions">
+        <button type="submit" class="btn">Show my risk report</button>
+        <a class="btn secondary" href="index.html">Cancel and go back</a>
+      </div>
+      <p class="disclaimer" style="margin-top:18px">This tool gives an educational risk estimate,
+      not a diagnosis, and it does not recommend treatment. If you have symptoms (chest pain,
+      shortness of breath, fainting) — seek emergency care now.</p>
+    </div>
   </form>
 </main>
 
-<footer class="site">MedRisk · Diploma project, SE-2425 / SE-2429 / SE-2419 · Supervisor: A.&nbsp;Bakiyeva</footer>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>MedRisk · Diploma project (SE-2425 / SE-2429 / SE-2419) · Supervisor: A.&nbsp;Bakiyeva</p>
+    <p class="footer-disclaimer">Risk estimates only — not a diagnosis. Consult a licensed physician.</p>
+  </div>
+</footer>
 </body>
 </html>

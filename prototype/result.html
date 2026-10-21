@@ -3,83 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MedRisk risk report — 10-year cardiovascular and type 2 diabetes risk estimates with plain-language factor explanations.">
 <title>Your risk report — MedRisk</title>
 <link rel="stylesheet" href="css/styles.css">
+<script src="js/prototype.js" defer></script>
 </head>
 <body>
-<header class="site">
-  <a class="logo" href="index.html"><span class="mark">MR</span> MedRisk</a>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="assessment.html">Assessment</a>
-    <a href="dashboard.html">History</a>
-    <a href="#">Log in</a>
-  </nav>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark" aria-hidden="true">MR</span>
+      <span class="logo-text">MedRisk</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assessment.html">Assessment</a></li>
+        <li><a href="dashboard.html">History</a></li>
+        <li><a href="login.html">Log in</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<main>
+<main id="main">
+  <a class="back-link" href="assessment.html">&larr; Back to the questionnaire</a>
+
   <h1>Your risk report</h1>
-  <p class="lead">Assessment #A-1042 · 19 October 2026 · model v0.3 (LightGBM)</p>
-  <div class="mockup-note">Prototype mockup: values below are a pre-built example for a
-  52-year-old female smoker with hypertension.</div>
+  <p class="lead">Illustrative report <span>#A-1042</span> · <span data-echo-date>19 October 2026</span>
+  · no model was executed</p>
+
+  <div class="disclaimer-top" role="note">
+    <p style="margin:0"><strong>This is a risk estimate, not a diagnosis.</strong> MedRisk shows how
+    likely a health outcome is for a group of people with similar answers. It cannot tell you whether
+    <em>you</em> have a disease, and it does not recommend treatment. Only a licensed physician can
+    diagnose you.</p>
+  </div>
+
+  <div class="mockup-note">
+    <p style="margin:0 0 6px"><span class="illustrative-tag">Illustrative example — not a real model output</span></p>
+    <p style="margin:0">The two percentages and the factor ranking below are a <strong>fixed mock
+    example</strong> (a 52-year-old female smoker with hypertension) used to demonstrate the layout.
+    No machine-learning model is running in this prototype. Your own answers are shown in the next
+    section so you can check what would have been sent.</p>
+  </div>
+
+  <div class="card" data-echo-root>
+    <h2>What you entered</h2>
+    <p class="hint" style="margin-top:0">The answers submitted from the questionnaire. Nothing was
+    stored in this prototype — the page was loaded straight from your browser.</p>
+    <p class="hint" data-echo-empty hidden>No answers were submitted — you opened this page directly.
+    Go back to the <a href="assessment.html">questionnaire</a> to try the flow.</p>
+    <table>
+      <caption>Questionnaire answers (echoed from the form).</caption>
+      <tbody>
+        <tr><th scope="row">Age</th><td data-echo="age">—</td></tr>
+        <tr><th scope="row">Sex</th><td data-echo="sex" data-echo-options="female=Female|male=Male">—</td></tr>
+        <tr><th scope="row">Height</th><td data-echo="height">—</td></tr>
+        <tr><th scope="row">Weight</th><td data-echo="weight">—</td></tr>
+        <tr><th scope="row">Systolic blood pressure</th><td data-echo="sbp">—</td></tr>
+        <tr><th scope="row">Total cholesterol</th><td data-echo="tc">—</td></tr>
+        <tr><th scope="row">HDL cholesterol</th><td data-echo="hdl">—</td></tr>
+        <tr><th scope="row">Fasting glucose</th><td data-echo="glucose">—</td></tr>
+        <tr><th scope="row">Smoking</th><td data-echo="smoker" data-echo-options="no=No|yes=Yes|former=Former smoker">—</td></tr>
+        <tr><th scope="row">Physical activity ≥ 150 min/week</th><td data-echo="active" data-echo-options="no=No|yes=Yes">—</td></tr>
+        <tr><th scope="row">Diagnosed hypertension</th><td data-echo="htn" data-echo-options="no=No|yes=Yes">—</td></tr>
+        <tr><th scope="row">Family history</th><td data-echo="famhist" data-echo-options="no=No|yes=Yes">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Estimated risk</h2>
 
   <div class="grid cols-2">
     <div class="card gauge">
-      <h2 style="margin-top:0">Cardiovascular disease · 10 years</h2>
+      <h3>Cardiovascular disease · 10 years</h3>
       <div class="value">24.6&nbsp;%</div>
-      <span class="risk-badge risk-high">High risk</span>
-      <div class="bar"><span style="width:62%; background:var(--high)"></span></div>
+      <p style="margin:0 0 8px"><span class="risk-level-label">Risk level:</span>
+        <span class="risk-badge risk-high"><span class="glyph" aria-hidden="true">▲</span> High risk</span></p>
+      <div class="bar" aria-hidden="true"><span style="width:62%; background:var(--risk-high)"></span></div>
+      <p class="range">Scale: 0 – 40 %</p>
       <p class="factor-note">Compared with a woman of your age in the general population
-      (≈&nbsp;5&nbsp;%), your risk is about 5× higher.</p>
+      (≈&nbsp;5&nbsp;%), this illustrative estimate is about 5× higher.</p>
     </div>
 
     <div class="card gauge">
-      <h2 style="margin-top:0">Type 2 diabetes · 10 years</h2>
+      <h3>Type 2 diabetes · 10 years</h3>
       <div class="value">31.2&nbsp;%</div>
-      <span class="risk-badge risk-very-high">Very high risk</span>
-      <div class="bar"><span style="width:78%; background:var(--very-high)"></span></div>
+      <p style="margin:0 0 8px"><span class="risk-level-label">Risk level:</span>
+        <span class="risk-badge risk-very-high"><span class="glyph" aria-hidden="true">■</span> Very high risk</span></p>
+      <div class="bar" aria-hidden="true"><span style="width:78%; background:var(--risk-very-high)"></span></div>
+      <p class="range">Scale: 0 – 40 %</p>
       <p class="factor-note">Fasting glucose 6.4 mmol/L is in the pre-diabetes range
-      (5.6–6.9 mmol/L).</p>
+      (5.6–6.9 mmol/L) — a value a doctor can confirm with a blood test.</p>
     </div>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0">What drives your cardiovascular risk</h2>
-    <p class="factor-note">Each bar shows the factor's contribution to <em>your</em> estimate.
-    Red increases it, green decreases it. Based on SHAP attribution of the model (FR-04).</p>
+    <h2>What drives your cardiovascular risk</h2>
+    <p class="factor-note">Each row shows one factor and how much it moved <em>your</em> estimate.
+    The arrow and the word both carry the meaning, so the list stays readable without colour.
+    The ranking comes from SHAP attribution inside the model (FR-04).</p>
     <ul class="factors">
-      <li><strong>Systolic blood pressure (142 mmHg)</strong> — strongly increases your risk
-        <div class="factor-bar"><span class="up" style="width:88%"></span></div></li>
-      <li><strong>Smoking</strong> — strongly increases your risk
-        <div class="factor-bar"><span class="up" style="width:74%"></span></div></li>
-      <li><strong>Age (52)</strong> — increases your risk
-        <div class="factor-bar"><span class="up" style="width:55%"></span></div></li>
-      <li><strong>HDL cholesterol (1.1 mmol/L, low)</strong> — increases your risk
-        <div class="factor-bar"><span class="up" style="width:41%"></span></div></li>
-      <li><strong>Physical inactivity</strong> — increases your risk
-        <div class="factor-bar"><span class="up" style="width:30%"></span></div></li>
-      <li><strong>HDL being above the lowest range</strong> — slightly decreases your risk
-        <div class="factor-bar"><span class="down" style="width:12%"></span></div></li>
+      <li>
+        <div class="factor-head">
+          <span><strong>Systolic blood pressure (142 mmHg)</strong></span>
+          <span class="direction up" aria-hidden="true">▲ increases</span>
+        </div>
+        <p class="factor-note" style="margin:2px 0 0">Strongly increases your risk — 88 % of the
+        largest contribution in this example.</p>
+        <div class="factor-bar" aria-hidden="true"><span class="up" style="width:88%"></span></div>
+      </li>
+      <li>
+        <div class="factor-head">
+          <span><strong>Smoking</strong></span>
+          <span class="direction up" aria-hidden="true">▲ increases</span>
+        </div>
+        <p class="factor-note" style="margin:2px 0 0">Strongly increases your risk — 74 % of the
+        largest contribution in this example.</p>
+        <div class="factor-bar" aria-hidden="true"><span class="up" style="width:74%"></span></div>
+      </li>
+      <li>
+        <div class="factor-head">
+          <span><strong>Age (52)</strong></span>
+          <span class="direction up" aria-hidden="true">▲ increases</span>
+        </div>
+        <p class="factor-note" style="margin:2px 0 0">Increases your risk — 55 % of the largest
+        contribution in this example.</p>
+        <div class="factor-bar" aria-hidden="true"><span class="up" style="width:55%"></span></div>
+      </li>
+      <li>
+        <div class="factor-head">
+          <span><strong>HDL cholesterol (1.1 mmol/L, low)</strong></span>
+          <span class="direction up" aria-hidden="true">▲ increases</span>
+        </div>
+        <p class="factor-note" style="margin:2px 0 0">Increases your risk — 41 % of the largest
+        contribution in this example.</p>
+        <div class="factor-bar" aria-hidden="true"><span class="up" style="width:41%"></span></div>
+      </li>
+      <li>
+        <div class="factor-head">
+          <span><strong>Physical inactivity</strong></span>
+          <span class="direction up" aria-hidden="true">▲ increases</span>
+        </div>
+        <p class="factor-note" style="margin:2px 0 0">Increases your risk — 30 % of the largest
+        contribution in this example.</p>
+        <div class="factor-bar" aria-hidden="true"><span class="up" style="width:30%"></span></div>
+      </li>
+      <li>
+        <div class="factor-head">
+          <span><strong>HDL being above the lowest range</strong></span>
+          <span class="direction down" aria-hidden="true">▼ decreases</span>
+        </div>
+        <p class="factor-note" style="margin:2px 0 0">Slightly decreases your risk — 12 % of the
+        largest contribution in this example.</p>
+        <div class="factor-bar" aria-hidden="true"><span class="down" style="width:12%"></span></div>
+      </li>
     </ul>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0">What you can do next</h2>
+    <h2>Who can help you interpret this result</h2>
     <ul>
-      <li>Measure your blood pressure at home for a week and show the log to your doctor.</li>
-      <li>Discuss medication review (antihypertensive / statin) with a physician — do not start or stop medication based on this tool.</li>
-      <li>Smoking cessation has the single largest effect on your personal risk in this estimate.</li>
-      <li>Repeat the assessment in 3–6 months to see the trend (create an account to track it).</li>
+      <li><strong>Start with a primary-care physician (therapist / GP / family doctor).</strong>
+      They can measure the values you left empty, check your blood pressure and interpret the
+      numbers against your own history.</li>
+      <li><strong>If you already have a diagnosis</strong> (for example hypertension or diabetes),
+      your <em>cardiologist</em> or <em>endocrinologist</em> can use this report as one more input
+      during your next visit.</li>
+      <li><strong>Bring this page with you</strong> — the “What you entered” table and the factor
+      list make a good starting point for the conversation.</li>
     </ul>
-    <p><a class="btn" href="dashboard.html">Save &amp; view history</a>
-       <a class="btn secondary" href="assessment.html">Re-do assessment</a></p>
+    <h3>Questions you can ask</h3>
+    <ul>
+      <li>Which of the measurements I left empty should I get, and where?</li>
+      <li>What do my blood pressure and cholesterol numbers mean for me?</li>
+      <li>How should I monitor my risk over the next year?</li>
+    </ul>
   </div>
 
-  <p class="disclaimer"><strong>This is not a diagnosis.</strong> MedRisk produces statistical
-  risk estimates from self-reported data. Model performance, limitations and validation results
-  are published in the project repository. Only a licensed physician can diagnose or treat disease.</p>
+  <div class="card">
+    <h2>What this tool cannot tell you</h2>
+    <ul>
+      <li>Whether you have a disease — MedRisk estimates a probability for a group, not a diagnosis
+      for an individual.</li>
+      <li>Which treatment, medicine or therapy you should take — that decision belongs to a
+      qualified physician. Do not start or stop any medication because of this page.</li>
+      <li>Whether an urgent condition is developing. If you have chest pain, severe shortness of
+      breath or fainting, seek emergency care immediately.</li>
+    </ul>
+  </div>
+
+  <div class="actions">
+    <a class="btn" href="dashboard.html">Save &amp; view history</a>
+    <a class="btn secondary" href="assessment.html">Re-do assessment</a>
+    <a class="btn secondary" href="index.html">Back to home</a>
+  </div>
+
+  <p class="disclaimer" style="margin-top:24px"><strong>This is not a diagnosis.</strong> MedRisk
+  produces statistical risk estimates from self-reported data. Model performance, limitations and
+  validation results are published in the project repository. Only a licensed physician can diagnose
+  or treat disease.</p>
 </main>
 
-<footer class="site">MedRisk · Diploma project, SE-2425 / SE-2429 / SE-2419 · Supervisor: A.&nbsp;Bakiyeva</footer>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>MedRisk · Diploma project (SE-2425 / SE-2429 / SE-2419) · Supervisor: A.&nbsp;Bakiyeva</p>
+    <p class="footer-disclaimer">Risk estimates only — not a diagnosis. Consult a licensed physician.</p>
+  </div>
+</footer>
 </body>
 </html>

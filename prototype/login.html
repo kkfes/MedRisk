@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MedRisk sign-in — guest mode or an account for saving assessment history.">
+<title>Log in — MedRisk</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark" aria-hidden="true">MR</span>
+      <span class="logo-text">MedRisk</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assessment.html">Assessment</a></li>
+        <li><a href="dashboard.html">History</a></li>
+        <li><a href="login.html" aria-current="page">Log in</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <a class="back-link" href="index.html">&larr; Back to home</a>
+
+  <h1>Log in or continue as a guest</h1>
+  <p class="lead">You can use MedRisk without an account. An account only adds saved history.</p>
+
+  <div class="mockup-note">
+    <p style="margin:0"><strong>Prototype mockup (pre-defense 0, DIP-8).</strong> No authentication
+    backend is running here — the form below does not check anything and the “Log in” button simply
+    opens the example history screen. Guest mode and real authentication are implemented together
+    with the API (FR-05, DIP-31).</p>
+  </div>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <h2>Guest mode</h2>
+      <p>Complete the questionnaire and read the report straight away. Nothing is linked to your
+      identity, and nothing is stored in this prototype.</p>
+      <ul>
+        <li>All 12 questions are available.</li>
+        <li>You get both risk estimates and the factor explanation.</li>
+        <li>You cannot save an assessment or see a trend — that needs an account.</li>
+      </ul>
+      <a class="btn" href="assessment.html">Continue as a guest</a>
+    </div>
+
+    <div class="card">
+      <h2>Sign in</h2>
+      <p>With an account you can save assessments and follow your risk over time.</p>
+      <form action="dashboard.html" method="get" novalidate>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="username"
+                 placeholder="you@example.com"
+                 aria-describedby="email-hint">
+          <p class="hint" id="email-hint">The address you would use to sign in.</p>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password"
+                 aria-describedby="password-hint">
+          <p class="hint" id="password-hint">Passwords are stored only as salted hashes (NFR-03) —
+          never in plain text.</p>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn">Log in</button>
+          <a class="btn secondary" href="#">Create an account</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <p class="disclaimer">Logging in is optional and only changes what is stored about you. MedRisk
+  never provides a diagnosis or a treatment recommendation — see the
+  <a href="index.html">home page</a> for details.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>MedRisk · Diploma project (SE-2425 / SE-2429 / SE-2419) · Supervisor: A.&nbsp;Bakiyeva</p>
+    <p class="footer-disclaimer">Risk estimates only — not a diagnosis. Consult a licensed physician.</p>
+  </div>
+</footer>
+</body>
+</html>
