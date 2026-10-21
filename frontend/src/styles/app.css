@@ -128,6 +128,32 @@ body {
   margin-right: var(--space-4);
 }
 
+.questionnaire-progress {
+  margin-bottom: var(--space-6);
+}
+
+.questionnaire-progress .progress__label {
+  display: block;
+  margin-top: var(--space-2);
+}
+
+#error-summary {
+  margin-bottom: var(--space-6);
+}
+
+#error-summary h2 {
+  margin-top: 0;
+}
+
+#error-summary ul {
+  margin-bottom: 0;
+  padding-left: var(--space-5);
+}
+
+#error-summary a {
+  color: var(--color-danger);
+}
+
 @media (max-width: 480px) {
   .definition-list {
     grid-template-columns: 1fr;

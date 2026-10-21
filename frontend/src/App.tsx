@@ -7,6 +7,7 @@ import { t } from './i18n'
 import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
+import { QuestionnairePage } from './pages/QuestionnairePage'
 
 /**
  * The application shell: skip link, header, navigation, the mock notice, the
@@ -55,12 +56,7 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route
-        path="/assessment"
-        element={
-          <PlaceholderPage title={t('nav.assessment')} message="placeholder.assessment" />
-        }
-      />
+      <Route path="/assessment" element={<QuestionnairePage />} />
       <Route
         path="/report/:id"
         element={<PlaceholderPage title={t('nav.report')} message="placeholder.report" />}

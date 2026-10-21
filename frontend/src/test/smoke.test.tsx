@@ -90,10 +90,10 @@ describe('the application shell', () => {
 })
 
 describe('the routes', () => {
-  it('routes to the questionnaire placeholder', () => {
+  it('routes to the questionnaire', () => {
     renderApp('/assessment')
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Questionnaire')
-    expect(screen.getByText(/DIP-36/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Health questionnaire')
+    expect(screen.getByRole('button', { name: 'Calculate my risk' })).toBeInTheDocument()
   })
 
   it('routes to the history placeholder', () => {
