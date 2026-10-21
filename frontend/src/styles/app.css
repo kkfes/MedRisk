@@ -1,0 +1,139 @@
+/* ============================================================================
+ * MedRisk — application layout
+ * ----------------------------------------------------------------------------
+ * Task: DIP-35 (React application scaffold)
+ *
+ * This file contains only the layout of the application shell (header, nav,
+ * main, footer) and the few text helpers the screens need. All component rules
+ * live in ./components.css, all values in ./tokens.css — the same split as the
+ * design system (DIP-19). No literal colour, size or duration is used here.
+ * ========================================================================== */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
+  background: var(--color-surface);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: var(--space-3) var(--layout-gutter);
+}
+
+.site-header__brand {
+  color: var(--color-text-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.site-header__brand:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+.site-header__tagline {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-left: auto;
+}
+
+.site-nav a {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.site-notice {
+  max-width: var(--layout-content-max-width);
+  margin: var(--space-4) auto 0;
+  padding-right: var(--space-4);
+  padding-left: var(--space-4);
+  width: calc(100% - 2 * var(--layout-gutter));
+}
+
+.site-main {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: var(--layout-content-max-width);
+  margin: 0 auto;
+  padding: var(--space-8) var(--layout-gutter);
+}
+
+.site-main:focus {
+  outline: none;
+}
+
+.site-footer {
+  background: var(--color-surface);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.site-footer p {
+  max-width: var(--layout-content-max-width);
+  margin: 0 auto;
+  padding: var(--space-6) var(--layout-gutter);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.lead {
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  max-width: 68ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.definition-list {
+  display: grid;
+  grid-template-columns: minmax(12rem, max-content) 1fr;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+}
+
+.definition-list dt {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.definition-list dd {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.metric {
+  display: inline-block;
+  margin-right: var(--space-4);
+}
+
+@media (max-width: 480px) {
+  .definition-list {
+    grid-template-columns: 1fr;
+  }
+
+  .site-nav {
+    margin-left: 0;
+  }
+}
