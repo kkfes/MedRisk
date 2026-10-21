@@ -2,15 +2,26 @@
 
 **Purpose:** import-ready backlog.
 **Project:** [medrisk.youtrack.cloud/projects/DIP](https://medrisk.youtrack.cloud/projects/DIP) — created;
-**all 46 tasks imported on 19 Oct 2026** (automated: `scripts/youtrack_import.py`, manual: guide below).
+**45 of the 46 tasks imported on 19 Oct 2026** (automated: `scripts/youtrack_import.py`, manual: guide below);
+the last task was added on 22 Oct 2026 (see the note on the task IDs below).
 The script is idempotent — re-run it after editing the CSV to keep YouTrack in sync.
-Verified: IDs run DIP-1 … DIP-46 in table order, and state, priority, milestone and
-due date match the CSV for every issue.
+Verified: the IDs run DIP-1 … DIP-46 (with one documented exception below), and state,
+priority, milestone and due date match the CSV for every issue.
+
+> **Note on the task IDs (22 Oct 2026):** YouTrack never renumbers issues. The task of
+> CSV row 43 ("Supervisor review of M1-M4 results") was created during the first import
+> on 19 Oct 2026 and later removed from the tracker, so the ID `DIP-43` could not be
+> reused. The task was re-created on 22 Oct 2026 as **`DIP-47`**; the mapping is
+> recorded in the script (`ID_OVERRIDES`) and the row order of the CSV stays the source
+> of truth. Every other task keeps its `DIP-1 … DIP-46` ID, so the tracker holds all
+> 46 tasks.
 
 > **Note on assignees:** the YouTrack *Assignee* field accepts users only, so the four
 > `Team` rows (DIP-6, DIP-10, DIP-41, DIP-44) are assigned to the coordinating lead
-> (Muslim, login `admin`); DIP-43 (supervisor review) is left unassigned — the
-> supervisor has no YouTrack account yet.
+> (Muslim, login `admin`). The supervisor review task (CSV row 43, tracked as `DIP-47`)
+> is **left unassigned**: YouTrack rejects the supervisor's account `abakiyeva` as an
+> assignee value, because the account has no access to the DIP project yet. After the
+> account is added to the project, a re-run of the import script assigns the task.
 
 ## How to import the backlog into YouTrack (step by step)
 
