@@ -42,6 +42,6 @@ Performance test p95 <= 500 ms,**Acceptance criteria:** k6/locust report attache
 End-to-end demo rehearsal with video backup,**Acceptance criteria:** demo runs twice successfully,Team,Critical,M5,To do,2027-02-04
 Documentation update and tag pre-defense-1,"**Acceptance criteria:** tag pushed, README updated",Muslim Syzdykov,Critical,M5,To do,2027-02-07
 Supervisor review of M1-M4 results,**Acceptance criteria:** feedback logged and addressed,Aigerim Bakiyeva,Critical,M5,To do,2027-02-06
-Evidence of relevance: 3-5 interviews with user representatives per protocol docs/evidence/user-research.md,"**Acceptance criteria:** findings log filled, verified findings vs assumptions marked",Team,Critical,M0,To do,2026-10-22
+Evidence of relevance: 3-5 interviews with user representatives per protocol docs/evidence/user-research.md,"**Acceptance criteria:** findings log filled, verified findings vs assumptions marked — DONE (2026-10-22, two interviews conducted by Muslim, log updated)",Team,Critical,M0,Done,2026-10-22
 "Create YouTrack project, import backlog, add link to README","**Acceptance criteria:** link live in README, tasks created",Muslim Syzdykov,Critical,M0,Done,2026-10-23
 "Push repository to GitHub, grant access to team and supervisor","**Acceptance criteria:** repository pushed to GitHub (github.com/kkfes/MedRisk), link in README; Zarina (haweeks) and Sara (Sierra07-w) invited as collaborators. **Note:** supervisor GitHub access is not required — team decision, 19 Oct 2026.",Muslim Syzdykov,Critical,M0,Done,2026-10-23

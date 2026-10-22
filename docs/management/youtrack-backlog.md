@@ -104,7 +104,7 @@ acceptance criteria are met.
 | DIP-9 | Verification & evaluation plan | Zarina | Critical | Metrics, baselines, thresholds defined |
 | DIP-10 | Project management: roles, milestones, risks | All | Major | Doc committed; team confirmed roles |
 | DIP-11 | YouTrack backlog preparation | Muslim | Major | Backlog + CSV import file committed |
-| DIP-44 | Evidence of relevance: 3–5 interviews with user representatives (protocol in `docs/evidence/user-research.md`) | All | Critical | Findings log filled; verified findings vs assumptions marked |
+| DIP-44 | Evidence of relevance: 3–5 interviews with user representatives (protocol in `docs/evidence/user-research.md`) | All | Critical | Findings log filled; verified findings vs assumptions marked — **DONE** (2026-10-22) |
 | DIP-45 | Create YouTrack project, import backlog, add link to README | Muslim | Critical | YouTrack link live in README; tasks DIP-1…DIP-46 created |
 | DIP-46 | Push repository to GitHub, grant access to team | Muslim | Critical | Repo link live in README; Zarina (`haweeks`) and Sara (`Sierra07-w`) invited as collaborators; supervisor access not required — team decision |
 
