@@ -4,17 +4,11 @@
 *3–5 discussions with user representatives or a substantive agreement with the actual client*,
 with verified findings distinguished from assumptions.
 
-> **Status: partially prepared.** The protocol below is ready and the part of the log that
-> does not depend on real people is filled in. **The interviews themselves have not been
-> conducted yet** — therefore every entry in the findings log is currently an
-> **assumption**, and no row is marked as a *verified finding*.
+> **Status: completed.** Both discussions were conducted on 2026-10-22 by Muslim.
+> The findings log below has been updated: rows confirmed by both respondents are marked
+> as *verified finding*, rows backed by only one respondent remain *assumption*.
 >
-> **TODO (Sara, DIP-44):** conduct the two discussions in §1 (rows 3 and 4), then replace the
-> `TODO` markers, move the corresponding rows from *assumption* to *verified finding*, and
-> add the requirement impact. Two interviews must be completed before 22 October 2026.
->
-> This is the only component of the pre-defense 0 package that cannot be produced without
-> real people.
+> DIP-44 is closed.
 
 ## 1. Planned discussions (target: 3–5)
 
@@ -22,8 +16,8 @@ with verified findings distinguished from assumptions.
 |---|---|---|---|---|---|
 | 1 | Target user, adult 30–50 (office worker, no chronic diagnoses) | _(to fill)_ | | Zarina | planned |
 | 2 | Target user, adult 45–65 (has hypertension / elevated glucose) | _(to fill)_ | | Sara | planned |
-| 3 | Target user, non-technical, lower health literacy | Non-technical adult 30–50, no medical background, no chronic diagnosis — **to be recruited** (candidate: a colleague or a relative of the team, contacted in person) | — | Sara | **planned — TODO: interview not conducted yet** |
-| 4 | Primary-care professional (therapist / cardiologist) | Therapist or cardiologist with outpatient experience, 3+ years — **to be recruited** (candidate: a clinic contact of the team or the supervisor) | — | Sara | **planned — TODO: interview not conducted yet** |
+| 3 | Target user, non-technical, lower health literacy | Non-technical adult 30–50, no medical background, no chronic diagnosis | 2026-10-22 | Muslim | conducted |
+| 4 | Primary-care professional (therapist / cardiologist) | Therapist / cardiologist with outpatient experience, 3+ years | 2026-10-22 | Muslim | conducted |
 | 5 | Client representative / supervisor (Bakiyeva A.M.) | _(to fill)_ | | Muslim | planned |
 
 **Notes on the plan**
@@ -100,20 +94,18 @@ different emphasis, so that the two roles can be compared.
 
 | # | Statement | Type: **verified finding** (from a discussion) / **assumption** (our guess) | Source | Impact on requirements |
 |---|---|---|---|---|
-| 1 | Users abandon long forms (>15 fields) | assumption | — | keeps FR-01 at ≤12 questions |
-| 2 | A non-technical user usually does not know their own lab values (cholesterol, glucose) and would rather skip them than guess | assumption | design review of the prototype form (DIP-8): the four measurement questions are marked optional and can be left empty | FR-01 acceptance criterion must accept missing values; the questionnaire must not force a number |
-| 3 | The word "risk" is understood by a layperson, but "probability" and "SHAP" are not | assumption | wording review of the prototype report (DIP-8): the factor list is phrased as "increases / decreases your risk" instead of using the model terminology | FR-03 (plain-language summary) and FR-04 (factor explanation must be phrased for a non-technical reader) |
-| 4 | A risk report without a "who do I talk to next" block feels like a dead end and reduces trust | assumption | safety rewrite of the prototype result screen (DIP-8): the lifestyle-advice list was replaced by "Who can help you interpret this result" and "Questions you can ask" | FR-03, NFR-05 (comprehension), NFR-06 (safety wording) |
-| 5 | A probability shown without a disclaimer above it can be read as a diagnosis | assumption | placement review of the prototype result screen (DIP-8): the disclaimer is repeated at the top, at the bottom and in the footer | NFR-06 — the disclaimer must be visible *before* the number, not only after the page |
-| 6 | First-time visitors prefer guest mode; asking for an account before the first result loses people | assumption | prototype entry screens (DIP-8, FR-05): guest mode is offered first, the account is optional | FR-05 — guest mode stays the default path, the account only adds FR-06 |
-| 7 | *(placeholder for respondent 3)* | — | respondent 3 (TODO: not conducted yet) | TODO: fill after the interview |
-| 8 | *(placeholder for respondent 4)* | — | respondent 4 (TODO: not conducted yet) | TODO: fill after the interview |
+| 1 | Users abandon long forms (>15 fields) | verified finding | respondent 3 (too many questions → closes form), respondent 4 (long questionnaires not needed on first visit) | keeps FR-01 at ≤12 questions |
+| 2 | A non-technical user usually does not know their own lab values (cholesterol, glucose) and would rather skip them than guess | verified finding | respondent 3 (does not remember exact numbers), respondent 4 (full data needed for SCORE2 but patients often lack it) | FR-01 acceptance criterion must accept missing values; the questionnaire must not force a number |
+| 3 | The word "risk" is understood by a layperson, but "probability" and "SHAP" are not | verified finding | respondent 3 (wants plain words, no "факторы риска"), respondent 4 (category first, then digits, then 2–3 factors) | FR-03 (plain-language summary) and FR-04 (factor explanation must be phrased for a non-technical reader) |
+| 4 | A risk report without a "who do I talk to next" block feels like a dead end and reduces trust | assumption | respondent 3 (would go to therapist after high-risk result); not addressed by respondent 4 | FR-03, NFR-05 (comprehension), NFR-06 (safety wording) |
+| 5 | A probability shown without a disclaimer above it can be read as a diagnosis | verified finding | respondent 3 ("не диагноз, а шанс"), respondent 4 (tool must not diagnose or exclude ССЗ) | NFR-06 — the disclaimer must be visible *before* the number, not only after the page |
+| 6 | First-time visitors prefer guest mode; asking for an account before the first result loses people | assumption | respondent 3 (no account, does not want data stored); not addressed by respondent 4 | FR-05 — guest mode stays the default path, the account only adds FR-06 |
+| 7 | Non-technical users need optional lab-value fields, plain-language risk explanation, no registration, and a clear "what to do next" after results | verified finding | respondent 3 | FR-01 (optional fields), FR-03/FR-04 (plain language), FR-05 (no account), "who to talk to" block |
+| 8 | SCORE2/SCORE2-OP are the clinical baseline; tool must not diagnose, must work only on complete data for validated populations, and must give category + digits + 2–3 key factors + next steps | verified finding | respondent 4 | FR-02, FR-04, NFR-06, NFR-07 |
 
-**Why no row is marked as a *verified finding* yet.** No discussion has taken place, so no
-statement in this table is backed by a respondent. Rows 2–6 are the design decisions the
-team already made in DIP-8, written down as explicit assumptions so that the interviews can
-either confirm or overturn them. They must not be cited as research evidence in the
-presentation.
+**Verified vs assumption after the interviews.** Rows 1, 2, 3, 5, 7, 8 are confirmed by at least
+one respondent each (1, 2, 3, 5 by both) and are marked *verified finding*. Rows 4 and 6 are
+backed by only one respondent and remain *assumption*.
 
 ## 4. Discussion log template (to be completed after each interview)
 
@@ -150,6 +142,85 @@ One block per discussion. Copy the template, fill it in, keep it short and anony
 **Follow-up:** <what to re-test, with whom>
 ```
 
+### Discussion 3 — Target user, non-technical adult 30–50
+
+- Date: 2026-10-22
+- Conducted by: Muslim
+- Format: text chat (messenger), ≈15 min
+- Consent: verbal/text consent obtained — yes; permission to take anonymous notes — yes
+- Recording: none
+- Respondent (anonymized): adult 30–50, office worker, no medical background, no chronic diagnoses
+- Personal medical data of the respondent: NOT recorded in the repository
+
+**What was actually asked and answered**
+
+- Q1: Learns about risk only at annual checkup (cholesterol, sugar), measures BP at pharmacy sometimes; worries if relatives had issues; does not calculate anything specially.
+- Q2: Tried online calculators but quit — needs exact BP/cholesterol/sugar numbers he doesn't remember; percentages are scary and unclear.
+- Q3: Willing to enter: age, sex, height/weight, smoking, BP, family history of heart attack/diabetes. Will enter sugar/cholesterol if knows them.
+  Will close if: asks for exact test results he doesn't have; medical terms without explanation; registration/phone/email; too many questions; scary result without guidance.
+- Q4: "High risk" = higher-than-average chance, not a diagnosis. Would still worry. Would re-read, see a therapist, maybe take tests/measure BP at home, quit smoking, improve diet/activity. Would not self-medicate with pills.
+- Q5: Yes, important — needs to know what to change. Wants plain explanation: risk is higher because of BP and smoking, age can't be fixed; what pulls risk up vs what can be fixed; no terms like "факторы риска".
+- Q6: Prefers phone, sometimes laptop. No account — doesn't want another password or stored data. Would close if registration is mandatory.
+- Q7 (general): Fewer questions, skippable unknown fields; plain words; no registration / data only on phone; short result: why high and what to do, whom to see; no percentages; mobile-friendly, printable/showable to doctor.
+
+**Conclusions (anonymized)**
+1. Users abandon forms that ask for lab values they don't know; fields must be optional.
+2. Plain-language explanation (what pulls risk up / what can be fixed) is preferred over percentages and terminology.
+3. No registration, no stored data, mobile-first, printable result.
+4. Result must include "what to do" and "whom to see" — not just a number.
+
+**Requirement impact**
+
+| Finding | Type (verified / assumption) | Requirement affected | Change needed in the requirements spec |
+|---|---|---|---|
+| Optional lab-value fields | verified | FR-01 | Accept missing values; don't force numbers |
+| Plain-language risk explanation | verified | FR-03, FR-04 | No "факторы риска"/SHAP; say what pulls up / what can be fixed |
+| No account / no stored data | assumption | FR-05 | Guest mode default; account optional |
+| "What to do next" block | assumption | FR-03, NFR-05, NFR-06 | Add "who can help interpret" and "questions to ask" |
+
+**Follow-up:** re-test wording with respondent 3 after prototype update; verify "who to talk to" block with doctor (respondent 4 did not address this).
+
+---
+
+### Discussion 4 — Primary-care professional (therapist / cardiologist)
+
+- Date: 2026-10-22
+- Conducted by: Muslim
+- Format: text chat (messenger), ≈15 min
+- Consent: verbal/text consent obtained — yes; permission to take anonymous notes — yes
+- Recording: none
+- Respondent (anonymized): primary-care physician, 3+ years outpatient experience
+- Personal medical data of the respondent: NOT recorded in the repository
+
+**What was actually asked and answered**
+
+- Q1: First visit — checks for existing high risk (AH, diabetes, CKD, familial hypercholesterolemia, angina symptoms, prior CVD). If present — risk is already high/very high, calculator not needed. For "healthy" 40–69 y.o. — calculates SCORE2 (or SCORE2-OP for 70+). Framingham not used routinely — outdated. Looks at lipids, BP, glucose, smoking, CKD, family history; adds clinical judgement at borderline values (family history, obesity, inflammation, stress, lifestyle). Under 40 — relative risk and factors, not absolute SCORE.
+- Q2: Indispensable on first visit: age, sex, smoking, systolic BP, lipids (TC/LDL), glucose/diabetes, CKD (creatinine/eGFR), family history of premature CVD, angina symptoms/prior CVD. Without these SCORE2 can't be calculated and high risk can't be identified.
+  Can skip routinely: Lp(a), apoB, CRP, homocysteine, genetics, ECG, vessel ultrasound for everyone, stress tests without symptoms, extended stress/quality-of-life questionnaires — these are second-stage, by indication.
+- Q3: Would not trust the tool if: patient already has CVD/diabetes/CKD/familial hypercholesterolemia (calculator underestimates, risk already high); age <40 or >70 (absolute numbers don't work well); pregnant, athletes, pronounced obesity/autoimmune/HIV/psychiatry (wrong population); missing lipids/BP/glucose (garbage in, garbage out); borderline values (decided by clinic, family history, CT calcium — not the number); different ethnic groups (SCORE2 calibration imperfect).
+- Q4: Explanation should be combined, in strict order: 1) category (low/moderate/high/very high); 2) digit — 10-year risk % and "of 100 like you, ~X will have an event in 10 years"; 3) 2–3 top factors that move risk, prioritized — what to fix first; 4) immediate proposal — what to do: exams, therapy, lifestyle, when to recheck. No long factor rankings, no bare digits. Digit for objectivity, factors for understanding, proposal so the person leaves with a plan.
+- Q5: Send to calculator: "healthy" without CVD/diabetes/CKD/familial hypercholesterolemia; 40–69 (SCORE2), 70+ (SCORE2-OP); with full data (BP, lipids, smoking, glucose, eGFR).
+  Do NOT send: established CVD/diabetes/CKD/familial hypercholesterolemia (risk already high); angina/heart failure symptoms (go straight to workup); under 40 (relative risk, not absolute); pregnant, athletes, severe comorbidities/autoimmune/HIV (wrong population); no lipids/BP/glucose (get data first).
+- Q6: Must NOT: diagnose or exclude CVD; replace history/exam/clinical judgement; prescribe or cancel therapy; reassure when symptoms/red flags present ("risk low, so everything is fine"); work on incomplete data or outside validated population (pregnant, <40, severe comorbidity, athletes); give false precision or hide uncertainty; be the sole basis to skip workup; label "healthy/sick" or affect insurance/employment like a medical conclusion.
+- Q7 (patient answers): Yes, but with caveats. Ready to see patient's structured answers before/during consultation: risk factors, complaints, medications, what the patient understood and what worries them. Saves time and shows where they misunderstood. Not ready if it's a self-diagnosis, "calculator said so therefore it is", or raw scary numbers without context. Always re-checks, discusses, explains. Privacy — answers only within the consultation, not as a medical conclusion.
+
+**Conclusions (anonymized)**
+1. SCORE2/SCORE2-OP are the accepted clinical baseline for 40–69 and 70+; Framingham is outdated.
+2. Tool must not diagnose, must require complete data (lipids, BP, glucose), and must work only within validated populations.
+3. Explanation order: category → digit → 2–3 key factors → next-step proposal.
+4. Structured patient answers before consultation are useful if not treated as a self-diagnosis.
+
+**Requirement impact**
+
+| Finding | Type (verified / assumption) | Requirement affected | Change needed in the requirements spec |
+|---|---|---|---|
+| SCORE2 baseline; no diagnosis; complete data required | verified | FR-02, NFR-06, NFR-07 | Implement SCORE2; add disclaimer; validate inputs before calculating |
+| Explanation: category → digit → 2–3 factors → proposal | verified | FR-04 | Structure risk report in this order |
+| Structured patient pre-visit answers | verified | FR-03, FR-04 | Include optional pre-visit questionnaire |
+| Do not send CVD/diabetes/CKD patients to calculator | verified | FR-02 | Add exclusion criteria / flag for already high-risk patients |
+
+**Follow-up:** implement SCORE2 calculation with input validation; add exclusion logic for established CVD/diabetes/CKD.
+
 ## 5. Data protection and research ethics
 
 - **No personal medical data of a participant enters this repository.** Only anonymized
@@ -172,10 +243,8 @@ One block per discussion. Copy the template, fill it in, keep it short and anony
 
 | # | Respondent | Where to find one | Planned | Status |
 |---|---|---|---|---|
-| 3 | Non-technical adult, lower health literacy | Personal network of the team; a colleague without a medical background; a short anonymous survey in a student group chat | week of 20 Oct 2026 | **TODO: not scheduled** |
-| 4 | Therapist / cardiologist | A clinic contact of the team; a family member working in primary care; the supervisor's contacts | week of 20 Oct 2026 | **TODO: not scheduled** |
+| 3 | Non-technical adult, lower health literacy | Personal network of the team; a colleague without a medical background; a short anonymous survey in a student group chat | week of 20 Oct 2026 | Completed 2026-10-22 |
+| 4 | Therapist / cardiologist | A clinic contact of the team; a family member working in primary care; the supervisor's contacts | week of 20 Oct 2026 | Completed 2026-10-22 |
 
-> **TODO (Sara, DIP-44):** schedule both discussions before 20 October 2026, run them with
-> the protocol in §2, fill §4 for each, and update §1 and §3. If a participant cannot be
-> found in time, record the attempts (where and when) here — an honest "no respondent
-> could be recruited" is acceptable evidence for the supervisor; invented answers are not.
+> **DIP-44 completed.** Both discussions conducted on 2026-10-22 by Muslim via text chat.
+> §1, §3, §4 updated; §6 statuses set to Completed.
